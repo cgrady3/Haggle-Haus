@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [1]
-        }
+      }
     },
     description: {
       type: DataTypes.TEXT,
@@ -22,17 +22,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     picture: {
       type: DataTypes.STRING,
-      defaultVAlue: https://cdn.clipart.email/4c2ef11c7e671bae0244a859318e1146_trading-clipart-4-clipart-station_1300-1390.jpeg
+      defaultValue:
+        "https://cdn.clipart.email/4c2ef11c7e671bae0244a859318e1146_trading-clipart-4-clipart-station_1300-1390.jpeg"
     }
   });
+
+  Sellers.associate = function(models) {
+    Sellers.belongTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Sellers;
-
-    Sellers.associate = function (models) {
-        Sellers.belongTo(models.User, {
-            foreignKey: {
-              allowNull: false
-          }
-      })
-  }
-
 };
