@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate:{
+      validate: {
         min: 1,
         max: 20
       }
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Buyers.associate = function(models) {
-    Buyers.belongTo(models.User, {
+    Buyers.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
       }
