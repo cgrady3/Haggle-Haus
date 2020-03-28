@@ -20,6 +20,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 20
+      }
+    },
     picture: {
       type: DataTypes.STRING,
       defaultValue:
