@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Bid.associate = function(models) {
-    Buyers.belongsTo(models.Users, {
+    Bid.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
       }
