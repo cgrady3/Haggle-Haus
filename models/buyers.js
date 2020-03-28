@@ -1,11 +1,19 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
   var Buyers = sequelize.define("Buyers", {
-    name: {
+    bid: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
+      }
+    },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate:{
+        min: 1,
+        max: 20
       }
     },
     description: {
@@ -15,7 +23,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    buy_barter: DataTypes.STRING,
     picture: {
       type: DataTypes.STRING,
       defaultValue:
