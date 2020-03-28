@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate:{
+      validate: {
         min: 1,
         max: 20
       }
