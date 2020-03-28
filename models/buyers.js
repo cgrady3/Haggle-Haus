@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
-  var Buyers = sequelize.define("Buyers", {
+  var Bid = sequelize.define("Bid", {
     bid: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Buyers.associate = function(models) {
+  Bid.associate = function(models) {
     Buyers.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
@@ -38,5 +38,5 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
-  return Buyers;
+  return Bid;
 };
