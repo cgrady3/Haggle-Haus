@@ -23,6 +23,10 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    accepted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     picture: {
       type: DataTypes.STRING,
       defaultValue:
@@ -32,6 +36,11 @@ module.exports = function(sequelize, DataTypes) {
 
   Bid.associate = function(models) {
     Bid.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Bid.belongsTo(models.Item, {
       foreignKey: {
         allowNull: false
       }

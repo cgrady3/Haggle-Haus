@@ -15,7 +15,12 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    base_barter: DataTypes.STRING,
+    base_barter: {
+      type: DataTypes.STRING
+    },
+    base_barter_amount: {
+      type: DataTypes.INTEGER
+    },
     sold: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -40,6 +45,9 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
+    });
+    Item.hasMany(models.BidOffers, {
+      onDelete: "cascade"
     });
   };
 
