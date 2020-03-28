@@ -28,10 +28,55 @@ module.exports = function(app) {
 
   //Delete a user.
   app.delete("/api/users/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbUsers
-    ) {
+    db.Users.destroy({
+      where: { id: req.params.id }
+    }).then(function(dbUsers) {
       res.json(dbUsers);
+    });
+  });
+
+  //Post an item for sale
+  app.post("/api/items", function(req, res) {
+    db.Item.create(req.body).then(function(dbItems) {
+      res.json(dbItems);
+    });
+  });
+
+  //Get all items for sale
+  app.get("/api/items", function(req, res) {
+    db.Item.findAll({ include: [{ model: db.Users }] }).then(function(dbItems) {
+      res.json(dbItems);
+    });
+  });
+
+  //Get a specific user by ID.
+  app.get("/api/items/:id", function(req, res) {
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbItems) {
+      res.json(dbItems);
+    });
+  });
+
+  //Get only items by a specific user
+  app.get("/api/items/user/:userid", function(req, res) {
+    db.Item.findOne({
+      where: {
+        UserId: req.params.userid
+      }
+    }).then(function(dbItems) {
+      res.json(dbItems);
+    });
+  });
+
+  //Delete an item.
+  app.delete("/api/items/:id", function(req, res) {
+    db.Item.destroy({
+      where: { id: req.params.id }
+    }).then(function(dbItem) {
+      res.json(dbItem);
     });
   });
 };
