@@ -1,24 +1,12 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
-  var Item = sequelize.define("Item", {
-    name: {
+  var Bid = sequelize.define("Bid", {
+    bid: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    base_barter: DataTypes.STRING,
-    sold: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
     },
     amount: {
       type: DataTypes.INTEGER,
@@ -28,6 +16,17 @@ module.exports = function(sequelize, DataTypes) {
         max: 20
       }
     },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    accepted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     picture: {
       type: DataTypes.STRING,
       defaultValue:
@@ -35,13 +34,18 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Item.associate = function(models) {
-    Item.belongsTo(models.Users, {
+  Bid.associate = function(models) {
+    Bid.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Bid.belongsTo(models.Item, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return Item;
+  return Bid;
 };

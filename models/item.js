@@ -1,19 +1,11 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
-  var Bid = sequelize.define("Bid", {
-    bid: {
+  var Item = sequelize.define("Item", {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
-      }
-    },
-    amount: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1,
-        max: 20
       }
     },
     description: {
@@ -23,6 +15,24 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    base_barter: {
+      type: DataTypes.STRING
+    },
+    base_barter_amount: {
+      type: DataTypes.INTEGER
+    },
+    sold: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 20
+      }
+    },
     picture: {
       type: DataTypes.STRING,
       defaultValue:
@@ -30,13 +40,16 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Bid.associate = function(models) {
-    Buyers.belongsTo(models.Users, {
+  Item.associate = function(models) {
+    Item.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
       }
     });
+    Item.hasMany(models.BidOffers, {
+      onDelete: "cascade"
+    });
   };
 
-  return Bid;
+  return Item;
 };
