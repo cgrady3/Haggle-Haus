@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
-    var Buyers = sequelize.define("Sellers", {
+    var Buyers = sequelize.define("Buyers", {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
