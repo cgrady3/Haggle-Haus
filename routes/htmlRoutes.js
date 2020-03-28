@@ -11,6 +11,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
+  // Load users page by passing in their id
   app.get("/user/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/users.html"));
   });
