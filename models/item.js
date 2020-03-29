@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    Item.hasMany(models.BidOffers, {
+    Item.hasMany(models.Bid, {
       onDelete: "cascade"
     });
   };

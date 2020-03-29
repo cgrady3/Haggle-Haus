@@ -40,6 +40,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
+
     Bid.belongsTo(models.Item, {
       foreignKey: {
         allowNull: false
