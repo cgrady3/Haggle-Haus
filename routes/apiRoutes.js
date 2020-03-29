@@ -44,12 +44,14 @@ module.exports = function(app) {
 
   //Get all items for sale
   app.get("/api/items", function(req, res) {
-    db.Item.findAll({ include: [{ model: db.Users }] }).then(function(dbItems) {
+    db.Item.findAll({
+      include: [{ model: db.Users }]
+    }).then(function(dbItems) {
       res.json(dbItems);
     });
   });
 
-  //Get a specific user by ID.
+  //Get a specific item by ID.
   app.get("/api/items/:id", function(req, res) {
     db.Item.findOne({
       where: {
@@ -62,7 +64,7 @@ module.exports = function(app) {
 
   //Get only items by a specific user
   app.get("/api/items/user/:userid", function(req, res) {
-    db.Item.findOne({
+    db.Item.findAll({
       where: {
         UserId: req.params.userid
       }
@@ -77,6 +79,64 @@ module.exports = function(app) {
       where: { id: req.params.id }
     }).then(function(dbItem) {
       res.json(dbItem);
+    });
+  });
+
+  //Post a bid for an item from a user
+  app.post("/api/bids", function(req, res) {
+    db.Bid.create(req.body).then(function(dbBids) {
+      res.json(dbBids);
+    });
+  });
+
+  //Get all bids for all items from all users
+  app.get("/api/bids", function(req, res) {
+    db.Bid.findAll({
+      include: [{ model: db.Item }, { model: db.Users }]
+    }).then(function(dbBids) {
+      res.json(dbBids);
+    });
+  });
+
+  //Get a specific bid by ID.
+  app.get("/api/bids/:id", function(req, res) {
+    db.Bid.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbBids) {
+      res.json(dbBids);
+    });
+  });
+
+  //Get only bids by a specific user
+  app.get("/api/bids/user/:userid", function(req, res) {
+    db.Bid.findAll({
+      where: {
+        UserId: req.params.userid
+      }
+    }).then(function(dbBids) {
+      res.json(dbBids);
+    });
+  });
+
+  //Get only bids for a specific item
+  app.get("/api/bids/item/:itemid", function(req, res) {
+    db.Bid.findAll({
+      where: {
+        ItemId: req.params.itemid
+      }
+    }).then(function(dbBids) {
+      res.json(dbBids);
+    });
+  });
+
+  //Delete an item.
+  app.delete("/api/bids/:id", function(req, res) {
+    db.Bid.destroy({
+      where: { id: req.params.id }
+    }).then(function(dbBids) {
+      res.json(dbBids);
     });
   });
 };
