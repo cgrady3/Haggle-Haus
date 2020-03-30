@@ -16,6 +16,10 @@ label{
   margin-bottom: 0px !important;
 }
 
+h3, h4{
+  margin: .6rem;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
