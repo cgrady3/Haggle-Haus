@@ -6,14 +6,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
       validate: {
-        len: [1, 15]
+        len: [8, 15]
       }
     },
     password: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1, 15]
+        len: [8, 15]
       }
     }
   });
