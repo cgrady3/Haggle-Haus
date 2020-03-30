@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var users = sequelize.define("users", {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,14 +18,14 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Users.associate = function(models) {
-    Users.hasMany(models.Item, {
+  users.associate = function(models) {
+    users.hasMany(models.item, {
       onDelete: "cascade"
     });
-    Users.hasMany(models.Bid, {
+    users.hasMany(models.bid, {
       onDelete: "cascade"
     });
   };
 
-  return Users;
+  return users;
 };

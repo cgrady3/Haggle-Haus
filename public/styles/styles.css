@@ -1,3 +1,45 @@
+body {
+  background-image: url(../img/vintage-concrete.png);
+  font-family: Arial, sans-serif;
+}
+
+th {
+  text-align: center;
+}
+
+input {
+  font-family: Arial, sans-serif;
+  font-size: 15px !important;
+}
+
+label {
+  margin-bottom: 0px !important;
+}
+
+h3, h4 {
+  margin: .6rem;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #c7c1c1;
+  color: #ece4da;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 10px 10px;
+  font-size: 12px;
+  border-top: 6px solid #c72103;
+}
+
+.contact-link {
+  margin: 14px;
+  margin-bottom: 20px;
+  color: #1e4b94;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -6,4 +48,73 @@
   .jumbotron {
     text-align: center;
   }
+}
+
+.card {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+#signInBody {
+  border: none;
+  width: 80%;
+}
+
+.card-header {
+  font-family: 'Marcellus SC', serif;
+}
+
+.form-control {
+  border: .5px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.logo>img {
+  float: left !important;
+  height: 230px;
+  width: 230px;
+}
+
+#main-signin {
+  float: right;
+  margin-right: 7%;
+  margin-top: 15%;
+  width: 70%;
+}
+
+#login, #newUser {
+  margin-right: 8px;
+  height: 25px;
+  width: 75px;
+  font-size: 14px;
+  border-radius: 2px;
+  border-color: #2f5bb7;
+  background-color: #1e4b94;
+  line-height: .8;
+  margin-top: -5px;
+}
+
+#search {
+  margin-top: 5px;
+  height: 22px;
+  width: 75px;
+  font-size: 14px;
+  border-radius: 2px;
+  border-color: #2f5bb7;
+  background-color: #1e4b94;
+  line-height: .8;
+  float: right;
+}
+
+#home-card {
+  margin-top: 25px;
 }
