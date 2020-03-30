@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 module.exports = function(sequelize, DataTypes) {
-  var Item = sequelize.define("Item", {
+  var item = sequelize.define("item", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,10 +21,6 @@ module.exports = function(sequelize, DataTypes) {
     base_barter_amount: {
       type: DataTypes.INTEGER
     },
-    sold: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    },
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -33,6 +29,10 @@ module.exports = function(sequelize, DataTypes) {
         max: 20
       }
     },
+    sold: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     picture: {
       type: DataTypes.STRING,
       defaultValue:
@@ -40,16 +40,16 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Item.associate = function(models) {
-    Item.belongsTo(models.Users, {
+  item.associate = function(models) {
+    item.belongsTo(models.users, {
       foreignKey: {
         allowNull: false
       }
     });
-    Item.hasMany(models.Bid, {
+    item.hasMany(models.bid, {
       onDelete: "cascade"
     });
   };
 
-  return Item;
+  return item;
 };
