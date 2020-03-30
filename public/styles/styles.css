@@ -1,3 +1,8 @@
+body{
+  background-image: url(../img/vintage-concrete.png);
+  font-family: Arial,sans-serif;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -7,3 +12,53 @@
     text-align: center;
   }
 }
+
+.card {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.card-body {
+  border: none;
+  width: 80%;
+}
+
+.form-control {
+  border: .5px solid grey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.logo>img {
+  float: left !important;
+  height: 230px;
+  width: 230px;
+}
+
+#main-signin {
+  float: right;
+  margin-right: 7%;
+  margin-top: 15%;
+  width: 70%;
+}
+
+#login, #newUser{
+  margin-right: 8px;
+  height: 25px;
+  width: 75px;
+  font-size: 14px;
+  border-radius: 2px;
+  border-color: #2f5bb7;
+  background-color: #1e4b94;
+  line-height: .8;
+  margin-top: -5px;
+}
+
