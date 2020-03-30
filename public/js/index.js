@@ -97,3 +97,13 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// Navbar collapse function
+document
+  .querySelector(".navbar-toggler")
+  .addEventListener("click", function(e) {
+    if (e) {
+      throw e;
+    }
+    document.querySelector("#SpartanNavbar").classList.toggle("show");
+  });

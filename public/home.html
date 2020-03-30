@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>HaggleHaus</title>
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <!-- Latest compiled and minified CSS & JS -->
     <link
       rel="stylesheet"
@@ -19,6 +20,39 @@
 
   <body>
     <div class="container">
+      <div class="navbar navbar-expand-lg navbar-light" role="navigation">
+        <a class="navbar-brand" href="/">
+          <img src="./img/favicon.png" alt="Haggle Haus" class="navbar-logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#HaggleHausNavbar"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="HaggleHausNavbar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"
+                >Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="/users">Bid Details</a>
+            </li>
+            <li>
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="jumbotron">
         <h1>HaggleHaus</h1>
         <h3>The greatest resource for trading goods.</h3>
@@ -32,12 +66,23 @@
             </div>
             <div class="card-body" id="biddingWell">
               <!-- All bids post here-->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID#</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="js/all.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
   </body>
 </html>
