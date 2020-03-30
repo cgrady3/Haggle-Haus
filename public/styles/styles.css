@@ -3,21 +3,41 @@ body {
   font-family: Arial, sans-serif;
 }
 
-th{
+th {
   text-align: center;
 }
 
-input{
+input {
   font-family: Arial, sans-serif;
   font-size: 15px !important;
 }
 
-label{
+label {
   margin-bottom: 0px !important;
 }
 
-h3, h4{
+h3, h4 {
   margin: .6rem;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #c7c1c1;
+  color: #ece4da;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 10px 10px;
+  font-size: 12px;
+  border-top: 6px solid #c72103;
+}
+
+.contact-link {
+  margin: 14px;
+  margin-bottom: 20px;
+  color: #1e4b94;
 }
 
 .list-group-item {
@@ -83,7 +103,7 @@ h3, h4{
   margin-top: -5px;
 }
 
-#search{
+#search {
   margin-top: 5px;
   height: 22px;
   width: 75px;
@@ -95,6 +115,6 @@ h3, h4{
   float: right;
 }
 
-#home-card{
+#home-card {
   margin-top: 25px;
 }
