@@ -1,6 +1,10 @@
-body{
+body {
   background-image: url(../img/vintage-concrete.png);
-  font-family: Arial,sans-serif;
+  font-family: Arial, sans-serif;
+}
+
+th{
+  text-align: center;
 }
 
 .list-group-item {
@@ -18,9 +22,13 @@ body{
   background-color: rgba(0, 0, 0, 0.0);
 }
 
-.card-body {
+#signInBody {
   border: none;
   width: 80%;
+}
+
+.card-header {
+  font-family: 'Marcellus SC', serif;
 }
 
 .form-control {
@@ -50,7 +58,7 @@ body{
   width: 70%;
 }
 
-#login, #newUser{
+#login, #newUser {
   margin-right: 8px;
   height: 25px;
   width: 75px;
@@ -62,3 +70,6 @@ body{
   margin-top: -5px;
 }
 
+#home-card{
+  margin-top: 25px;
+}
