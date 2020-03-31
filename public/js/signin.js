@@ -55,7 +55,7 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
-      location.href = `currentURL${/home/data.id}`;
+      location.href = `currentURL${/home/user.id}`;
     });
   } catch (err) {
     if (SequelizeUniqueConstraintError) {

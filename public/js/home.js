@@ -45,3 +45,18 @@ $(document).ready(function() {
     }
   });
 });
+
+$("#search").click(function(event) {
+  event.preventDefault();
+  var item = $("#search")
+    .val()
+    .trim();
+  search = {
+    item: item
+  };
+
+  $.get("/api/items/:item", search).then(function(data) {
+    console.log(data.name);
+    location.href = `currentURL${/home/item/data.name}`;
+  });
+});
