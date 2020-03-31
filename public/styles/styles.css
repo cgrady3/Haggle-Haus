@@ -3,8 +3,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-th,
-td {
+th, td {
   text-align: center;
 }
 
@@ -17,8 +16,7 @@ label {
   margin-bottom: 0px !important;
 }
 
-h3,
-h4 {
+h3, h4 {
   margin: 0.6rem;
 }
 
@@ -36,6 +34,18 @@ footer {
   border-top: 6px solid #c72103;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
 .contact-link {
   margin: 14px;
   margin-bottom: 20px;
@@ -80,7 +90,7 @@ footer {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.logo > img {
+.logo>img {
   float: left !important;
   height: 230px;
   width: 230px;
@@ -93,8 +103,7 @@ footer {
   width: 70%;
 }
 
-#login,
-#newUser {
+#login, #newUser {
   margin-right: 8px;
   height: 25px;
   width: 75px;
