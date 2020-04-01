@@ -1,7 +1,10 @@
 var currentURL = window.location.origin;
+var url = window.location.search;
+var urlParams = new URLSearchParams(url);
+var id = urlParams.get(id);
+var item = urlParams.get(item);
 
 $(document).ready(function() {
-  
   // The API object contains methods for each kind of request we'll make
   var api = {
     submit: function(res, path) {
@@ -28,7 +31,7 @@ $(document).ready(function() {
     }
   };
 
-  api.grab("items").then(function(response) {
+  api.grab(`${id}/${item}`).then(function(response) {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
@@ -49,10 +52,8 @@ $(document).ready(function() {
   });
 });
 
-$("#search").click(function(event) {
+$("#clearSearch").click(function(event) {
   event.preventDefault();
-  var item = $("#search")
-    .val()
-    .trim();
-    location.href = `currentURL/${item}`;
+  
+  location.href = `/home/${id}`;
 });

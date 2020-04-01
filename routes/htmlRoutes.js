@@ -13,7 +13,7 @@ module.exports = function(app) {
 
   // Load main market page and pass in signed-in users id
   app.get("/home/:id/:item", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+    res.sendFile(path.join(__dirname, "../public/search.html"));
   });
 
   // Load users page by passing in their id
