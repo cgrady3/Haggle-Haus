@@ -26,7 +26,7 @@ $("#login").click(function(event) {
         }
       }
       if (signin){
-        location.href = `currentURL${/home/user.id}`;
+        location.href = currentURL+ '/home/' + user.id;
       } else{
         alert("Invalid user name of password");
       }
@@ -55,7 +55,7 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
-      location.href = `currentURL${/home/user.id}`;
+      location.href = currentURL+ '/home/' + user.id;
     });
   } catch (err) {
     if (SequelizeUniqueConstraintError) {

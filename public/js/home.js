@@ -54,5 +54,5 @@ $("#search").click(function(event) {
   var item = $("#search")
     .val()
     .trim();
-    location.href = `currentURL/${item}`;
+    location.href = currentURL+ '/' + item;
 });
