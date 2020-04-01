@@ -55,7 +55,7 @@ $("#search").click(function(event) {
     item: item
   };
 
-  $.get("/api/items/:item", search).then(function(data) {
+  $.get(`/api/items/${search.item}`).then(function(data) {
     console.log(data.name);
     location.href = `currentURL${/home/item/data.name}`;
   });

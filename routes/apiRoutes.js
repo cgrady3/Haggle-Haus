@@ -88,7 +88,7 @@ module.exports = function(app) {
     db.item
       .findAll({
         where: {
-          name: req.params.item
+          name: req.params.name
         }
       })
       .then(function(dbItems) {
