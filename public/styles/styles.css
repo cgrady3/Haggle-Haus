@@ -85,10 +85,19 @@ select:-webkit-autofill:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.logo{
+    margin-right: 2rem;
+}
+
 .logo > img {
   float: left !important;
   height: 230px;
   width: 230px;
+}
+
+#add-item {
+  padding-bottom: 32px;
+  margin-bottom: 52px;
 }
 
 #main-signin {
@@ -130,11 +139,6 @@ select:-webkit-autofill:focus {
 @media (max-width: 991px) {
   .logo {
     margin-bottom: 2rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .logo {
-    margin-right: 2rem;
+    margin-right: 0rem;
   }
 }
