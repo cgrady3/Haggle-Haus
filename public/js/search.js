@@ -55,5 +55,5 @@ $(document).ready(function() {
 $("#clearSearch").click(function(event) {
   event.preventDefault();
   
-  location.href = `/home/${id}`;
+  location.href = '/home/' + id;
 });

@@ -62,11 +62,6 @@ select:-webkit-autofill:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
-#signInBody {
-  border: none;
-  background-color: whitesmoke;
-}
-
 .card-header {
   font-family: "Marcellus SC", serif;
 }
