@@ -85,8 +85,8 @@ select:-webkit-autofill:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.logo{
-    margin-right: 2rem;
+.logo {
+  margin-right: 2rem;
 }
 
 .logo > img {
