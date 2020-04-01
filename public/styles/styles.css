@@ -45,7 +45,6 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 .contact-link {
@@ -58,12 +57,6 @@ select:-webkit-autofill:focus {
   line-height: 2.5;
 }
 
-@media (max-width: 640px) {
-  .jumbotron {
-    text-align: center;
-  }
-}
-
 .card {
   border: none;
   background-color: rgba(0, 0, 0, 0);
@@ -71,7 +64,7 @@ select:-webkit-autofill:focus {
 
 #signInBody {
   border: none;
-  width: 80%;
+  background-color: whitesmoke;
 }
 
 .card-header {
@@ -90,6 +83,10 @@ select:-webkit-autofill:focus {
 .form-control:focus {
   box-shadow: none;
   background-color: rgba(0, 0, 0, 0);
+}
+
+.logo{
+    margin-right: 2rem;
 }
 
 .logo > img {
@@ -137,4 +134,11 @@ select:-webkit-autofill:focus {
 
 #home-card {
   margin-top: 25px;
+}
+
+@media (max-width: 991px) {
+  .logo {
+    margin-bottom: 2rem;
+    margin-right: 0rem;
+  }
 }
