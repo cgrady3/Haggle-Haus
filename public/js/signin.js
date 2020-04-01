@@ -19,6 +19,10 @@ $("#login").click(function(event) {
   try {
     $.get("/api/users", user).then(function(data) {
       console.log(data);
+      console.log("username: " + user.name);
+      console.log("password: " + user.password);
+      console.log("user 1: " + data[0].name);
+      console.log("user 1 password: " + data[0].password);
       for (var i = 0; i < data.length; i++) {
         if (data[i].name === user.name && data[i].password === user.password) {
             user = data[i];
@@ -28,7 +32,7 @@ $("#login").click(function(event) {
       if (signin){
         location.href = currentURL+ '/home/' + user.id;
       } else{
-        alert("Invalid user name of password");
+        alert("Invalid user name or password");
       }
     });
   } catch (err) {
