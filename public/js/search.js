@@ -1,4 +1,4 @@
-var currentURL = window.location.origin;
+var baseURL = 'https://haggle-haus.herokuapp.com/';
 var url = window.location.search;
 var urlParams = new URLSearchParams(url);
 var id = urlParams.get(id);
@@ -54,6 +54,20 @@ $(document).ready(function() {
 
 $("#clearSearch").click(function(event) {
   event.preventDefault();
-  
-  location.href = '/home/' + id;
+  location.href = baseURL + '/home/' + id;
+});
+
+$("#home").click(function(event) {
+  event.preventDefault();
+  location.href = baseURL + "home/" + id;
+});
+
+$("#userProfile").click(function(event) {
+  event.preventDefault();
+  location.href = currentURL;
+});
+
+$("#about").click(function(event) {
+  event.preventDefault();
+  location.href = baseURL + "aboutTheHaus";
 });
