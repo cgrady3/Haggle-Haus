@@ -60,7 +60,7 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
-      location.href = baseURL+ '/home/' + user.id;
+      location.href = baseURL+ '/home/' + data.id;
     });
   } catch (err) {
     console.log(err);
