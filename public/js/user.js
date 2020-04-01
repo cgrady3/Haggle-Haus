@@ -24,6 +24,22 @@ $(document).ready(function() {
     }
   };
 
+  api.grab("items/user/" + user).then(function(response) {
+    console.log(response);
+    for (var i = 0; i < response.length; i++) {
+      var newRow = $(
+        "<tr> <td> <img src =" +
+          response[i].picture +
+          " alt='' border=3 height=50 width=50 </img></td> <td>" +
+          response[i].name +
+          "</td> <td>" +
+          response[i].description +
+          "</td> </tr>"
+      );
+      $("#current-offers").append(newRow);
+    }
+  });
+
   // Grabs form information to post to items API
   $("#add-item-listing").on("click", function(event) {
     event.preventDefault();
