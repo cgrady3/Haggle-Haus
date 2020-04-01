@@ -1,34 +1,45 @@
 USE haggle_db;
 
 INSERT INTO users
-    (username, password)
+    (username, password, createdAt, updatedAt
+    )
 VALUES
-    ("HaggleHans", "getthisbread");
+    ("HaggleHans", "getthisbread", NOW(), NOW());
 
 INSERT INTO users
-    (username, password)
+    (username, password, createdAt, updatedAt
+    )
 VALUES
-    ("TradingTracy", "omgwhat123");
+    ("TradingTracy", "excuseme", NOW(), NOW());
 
-INSERT INTO bid
-    (bid, amount, description)
+INSERT INTO users
+    (username, password, createdAt, updatedAt
+    )
 VALUES
-    ("lysol", 3, "some lysol");
+    ("BarterBenny", "password", NOW(), NOW());
 
-INSERT INTO bid
-    (bid, amount, description)
+INSERT INTO users
+    (username, password, createdAt, updatedAt
+    )
 VALUES
-    ("towels", 2, "some towels");
+    ("PeddlingPat", "buymystuff", NOW(), NOW());
 
-INSERT INTO item
-    (name, description, base_barter, base_barter_amount, amount)
+INSERT INTO items
+    (name, description, base_barter, base_barter_amount, amount, createdAt, updatedAt, UserId)
 VALUES
-    ("denim skirt", "its a short skirt", "jeans", 1, 1);
+    ("demin skirt", "it's a short skirt", "jeans", 1, 1, NOW(), NOW(), 2);
 
-INSERT INTO item
-    (name, description, base_barter, base_barter_amount, amount)
+INSERT INTO items
+    (name, description, base_barter, base_barter_amount, amount, createdAt, updatedAt, UserId)
 VALUES
-    ("hoodie", "its a pink hoodie", "sweater", 2, 1);
+    ("hoodie", "it's a pink hoodie", "sweater", 2, 1, NOW(), NOW(), 1);
 
+INSERT INTO bids
+    (bid, amount, description, createdAt, updatedAt, UserId, ItemId)
+VALUES
+    ("lysol", 3, "some lysol", NOW(), NOW(), 3, 1);
 
-
+INSERT INTO bids
+    (bid, amount, description, createdAt, updatedAt, UserId, ItemId)
+VALUES
+    ("towels", 2, "some towels", NOW(), NOW(), 1, 2);
