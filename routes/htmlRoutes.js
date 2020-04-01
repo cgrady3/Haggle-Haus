@@ -1,7 +1,7 @@
 var path = require("path");
 
 module.exports = function(app) {
-  // Load welcime/sign-in page
+  // Load welcome/sign-in page
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
@@ -10,7 +10,7 @@ module.exports = function(app) {
   app.get("/home/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
-  
+
   // Load main market page and pass in signed-in users id
   app.get("/home/:id/:item", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));

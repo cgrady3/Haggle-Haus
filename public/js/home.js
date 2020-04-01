@@ -57,6 +57,6 @@ $("#search").click(function(event) {
 
   $.get(`/api/items/${search.item}`).then(function(data) {
     console.log(data.name);
-    location.href = `currentURL${/home/item/data.name}`;
+    location.href = `currentURL${/home/eimt / data.name}`;
   });
 });
