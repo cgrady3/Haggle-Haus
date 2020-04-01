@@ -20,6 +20,6 @@ With Haggle-Haus, the User can look though a vast database of available items an
 
 ## Authors
 
-**Carolyn Grady**
-**Matthew Lipphardt**
+**Carolyn Grady**  
+**Matthew Lipphardt**  
 **Bryan Wise**
