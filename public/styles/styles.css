@@ -36,6 +36,17 @@ footer {
   border-top: 6px solid #c72103;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+}
 .contact-link {
   margin: 14px;
   margin-bottom: 20px;
@@ -46,12 +57,6 @@ footer {
   line-height: 2.5;
 }
 
-@media (max-width: 640px) {
-  .jumbotron {
-    text-align: center;
-  }
-}
-
 .card {
   border: none;
   background-color: rgba(0, 0, 0, 0);
@@ -59,7 +64,7 @@ footer {
 
 #signInBody {
   border: none;
-  width: 80%;
+  background-color: whitesmoke;
 }
 
 .card-header {
@@ -80,10 +85,19 @@ footer {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.logo{
+    margin-right: 2rem;
+}
+
 .logo > img {
   float: left !important;
   height: 230px;
   width: 230px;
+}
+
+#add-item {
+  padding-bottom: 32px;
+  margin-bottom: 52px;
 }
 
 #main-signin {
@@ -120,4 +134,11 @@ footer {
 
 #home-card {
   margin-top: 25px;
+}
+
+@media (max-width: 991px) {
+  .logo {
+    margin-bottom: 2rem;
+    margin-right: 0rem;
+  }
 }
