@@ -164,7 +164,7 @@ module.exports = function(app) {
       });
   });
 
-  //Delete an item.
+  //Delete an bid
   app.delete("/api/bids/:id", function(req, res) {
     db.bid
       .destroy({
