@@ -32,8 +32,9 @@ $("#login").click(function(event) {
       }
     });
   } catch (err) {
+    console.log(err);
     if (ValidationError) {
-      alert("Invalid user name of password");
+      alert("Invalid user name or password");
     }
   }
   $("#userName").val("");
@@ -58,10 +59,11 @@ $("#newUser").click(function(event) {
       location.href = currentURL+ '/home/' + user.id;
     });
   } catch (err) {
+    console.log(err);
     if (SequelizeUniqueConstraintError) {
       alert("username is taken");
     } else if (ValidationError) {
-      alert("Invalid user name of password");
+      alert("Invalid user name or password");
     }
   }
   $("#userName").val("");
