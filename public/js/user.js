@@ -1,3 +1,9 @@
+var currentURL = window.location.origin;
+var url = window.location.search;
+var urlParams = new URLSearchParams(url);
+var id = urlParams.get(id);
+var item = urlParams.get(item);
+
 $(document).ready(function() {
   // Grabs user id from url
   var url = window.location.href;
@@ -96,4 +102,19 @@ $(document).ready(function() {
       console.log(response);
     });
   });
+});
+
+$("#home").click(function(event) {
+  event.preventDefault();
+  location.href = baseURL + "home/" + id;
+});
+
+$("#userProfile").click(function(event) {
+  event.preventDefault();
+  location.href = currentURL;
+});
+
+$("#about").click(function(event) {
+  event.preventDefault();
+  location.href = baseURL + "aboutTheHaus";
 });

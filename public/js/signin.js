@@ -1,4 +1,4 @@
-var currentURL = window.location.origin;
+var baseURL = 'https://haggle-haus.herokuapp.com/';
 var username;
 var password;
 var user;
@@ -30,7 +30,7 @@ $("#login").click(function(event) {
         }
       }
       if (signin){
-        location.href = currentURL+ '/home/' + user.id;
+        location.href = baseURL + '/home/' + user.id;
       } else{
         alert("Invalid user name or password");
       }
@@ -60,7 +60,7 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
-      location.href = currentURL+ '/home/' + user.id;
+      location.href = baseURL+ '/home/' + user.id;
     });
   } catch (err) {
     console.log(err);
