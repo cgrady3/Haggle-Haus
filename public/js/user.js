@@ -3,7 +3,6 @@ $(document).ready(function() {
   var url = window.location.href;
   var parsedUrl = url.split("/");
   var user = parsedUrl[4];
-  console.log(user);
 
   // API object
   var api = {
@@ -32,11 +31,29 @@ $(document).ready(function() {
           response[i].picture +
           " alt='' border=3 height=50 width=50 </img></td> <td>" +
           response[i].name +
-          "</td> <td>" +
-          response[i].description +
-          "</td> </tr>"
+          "</td> <td data-id = item-" +
+          i +
+          "> test</td> </tr>"
       );
-      $("#current-offers").append(newRow);
+      $("#user-offers").append(newRow);
+    }
+  });
+
+  api.grab("bids/user/" + user).then(function(response) {
+    console.log(response);
+    for (var i = 0; i < response.length; i++) {
+      var newRow = $(
+        "<tr> <td>" +
+          response[i].item.amount +
+          " " +
+          response[i].item.name +
+          "</td> <td>" +
+          response[i].amount +
+          " " +
+          response[i].bid +
+          "</td></tr>"
+      );
+      $("#user-bids").append(newRow);
     }
   });
 

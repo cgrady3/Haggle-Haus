@@ -129,9 +129,8 @@ module.exports = function(app) {
   app.get("/api/bids/user/:userid", function(req, res) {
     db.bid
       .findAll({
-        where: {
-          userId: req.params.userid
-        }
+        include: [{ model: db.item }],
+        where: { userId: req.params.userid }
       })
       .then(function(dbBids) {
         res.json(dbBids);
