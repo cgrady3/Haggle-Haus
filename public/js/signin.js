@@ -6,7 +6,7 @@ var signin = false;
 
 $("#login").click(function(event) {
   event.preventDefault();
-  username = $("#username")
+  username = $("#userName")
     .val()
     .trim();
   password = $("#password")
@@ -41,13 +41,13 @@ $("#login").click(function(event) {
       alert("Invalid user name or password");
     }
   }
-  $("#username").val("");
+  $("#userName").val("");
   $("#password").val("");
 });
 
 $("#newUser").click(function(event) {
   event.preventDefault();
-  username = $("#username")
+  username = $("#userName")
     .val()
     .trim();
   password = $("#password")
@@ -70,6 +70,6 @@ $("#newUser").click(function(event) {
       alert("Invalid user name or password");
     }
   }
-  $("#username").val("");
+  $("#userName").val("");
   $("#password").val("");
 });
