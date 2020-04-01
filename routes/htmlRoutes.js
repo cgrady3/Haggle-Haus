@@ -10,6 +10,11 @@ module.exports = function(app) {
   app.get("/home/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
+  
+  // Load main market page and pass in signed-in users id
+  app.get("/home/:id/:item", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
+  });
 
   // Load users page by passing in their id
   app.get("/user/:id", function(req, res) {

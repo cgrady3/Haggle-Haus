@@ -83,6 +83,19 @@ module.exports = function(app) {
       });
   });
 
+  //Get only items by a specific name
+  app.get("/api/items/:name", function(req, res) {
+    db.item
+      .findAll({
+        where: {
+          name: req.params.name
+        }
+      })
+      .then(function(dbItems) {
+        res.json(dbItems);
+      });
+  });
+
   //Delete an item.
   app.delete("/api/items/:id", function(req, res) {
     db.item
