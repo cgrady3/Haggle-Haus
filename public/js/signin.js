@@ -1,30 +1,30 @@
 var currentURL = window.location.origin;
-var userName;
+var username;
 var password;
 var user;
 var signin = false;
 
 $("#login").click(function(event) {
   event.preventDefault();
-  userName = $("#userName")
+  username = $("#username")
     .val()
     .trim();
   password = $("#password")
     .val()
     .trim();
   user = {
-    name: userName,
+    username: username,
     password: password
   };
   try {
     $.get("/api/users", user).then(function(data) {
       console.log(data);
-      console.log("username: " + user.name);
+      console.log("username: " + user.username);
       console.log("password: " + user.password);
-      console.log("user 1: " + data[0].name);
+      console.log("user 1: " + data[0].username);
       console.log("user 1 password: " + data[0].password);
       for (var i = 0; i < data.length; i++) {
-        if (data[i].name === user.name && data[i].password === user.password) {
+        if (data[i].username === user.username && data[i].password === user.password) {
             user = data[i];
             signin = true;
         }
@@ -41,20 +41,20 @@ $("#login").click(function(event) {
       alert("Invalid user name or password");
     }
   }
-  $("#userName").val("");
+  $("#username").val("");
   $("#password").val("");
 });
 
 $("#newUser").click(function(event) {
   event.preventDefault();
-  userName = $("#userName")
+  username = $("#username")
     .val()
     .trim();
   password = $("#password")
     .val()
     .trim();
   user = {
-    name: userName,
+    username: username,
     password: password
   };
   try {
@@ -70,6 +70,6 @@ $("#newUser").click(function(event) {
       alert("Invalid user name or password");
     }
   }
-  $("#userName").val("");
+  $("#username").val("");
   $("#password").val("");
 });
