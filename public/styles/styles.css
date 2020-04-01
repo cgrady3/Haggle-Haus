@@ -3,7 +3,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
-th, td {
+th,
+td {
   text-align: center;
 }
 
@@ -16,7 +17,8 @@ label {
   margin-bottom: 0px !important;
 }
 
-h3, h4 {
+h3,
+h4 {
   margin: 0.6rem;
 }
 
@@ -35,7 +37,7 @@ footer {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -90,10 +92,15 @@ select:-webkit-autofill:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
-.logo>img {
+.logo > img {
   float: left !important;
   height: 230px;
   width: 230px;
+}
+
+#add-item {
+  padding-bottom: 32px;
+  margin-bottom: 52px;
 }
 
 #main-signin {
@@ -103,7 +110,8 @@ select:-webkit-autofill:focus {
   width: 70%;
 }
 
-#login, #newUser {
+#login,
+#newUser {
   margin-right: 8px;
   height: 25px;
   width: 75px;
