@@ -24,9 +24,9 @@ module.exports = function(app) {
 
   //Create a new user with hashed password
   app.post("/api/users", async function(req, res) {
+    var hashedPassword = await bcrypt.hash(req.body.password, 10);
+    var user = { username: req.body.username, password: hashedPassword };
     try {
-      var hashedPassword = await bcrypt.hash(req.body.password, 10);
-      var user = { username: req.body.username, password: hashedPassword };
       db.users.create(user).then(function(data) {
         res.json(data);
       });
@@ -39,24 +39,23 @@ module.exports = function(app) {
   app.post("/users/login", async function(req, res) {
     password = req.body.password;
     username = req.body.username;
-
-    db.users
-      .findOne({
-        where: {
-          username: username
-        }
-      })
-      .then(async function(data) {
-        try {
+    try {
+      db.users
+        .findOne({
+          where: {
+            username: username
+          }
+        })
+        .then(async function(data) {
           if (await bcrypt.compare(password, data.password)) {
             res.json(data);
           } else {
-            res.send('not a match');
+            res.send("not a match");
           }
-        } catch {
-          res.status(500).send("incorrect username or password");
-        }
-      });
+        });
+    } catch {
+      res.status(500).send("incorrect username or password");
+    }
   });
 
   //Delete a user.
