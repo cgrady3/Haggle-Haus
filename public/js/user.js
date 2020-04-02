@@ -31,15 +31,16 @@ $(document).ready(function() {
 
   api.grab("items/user/" + user).then(function(response) {
     console.log(response);
+
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
         "<tr> <td> <img src =" +
           response[i].picture +
           " alt='' border=3 height=50 width=50 </img></td> <td>" +
           response[i].name +
-          "</td> <td data-id = item-" +
-          i +
-          "> test</td> </tr>"
+          "</td> <td>" +
+          response[i].bids.length +
+          "</td > </tr > "
       );
       $("#user-offers").append(newRow);
     }
