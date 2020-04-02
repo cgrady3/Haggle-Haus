@@ -74,6 +74,7 @@ module.exports = function(app) {
   app.get("/api/items/user/:userid", function(req, res) {
     db.item
       .findAll({
+        include: [{ model: db.bid }],
         where: {
           userId: req.params.userid
         }
