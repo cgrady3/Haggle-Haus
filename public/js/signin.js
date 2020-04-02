@@ -2,6 +2,7 @@ var baseURL = "https://haggle-haus.herokuapp.com/";
 var username;
 var password;
 var user;
+var id;
 
 $("#login").click(function(event) {
   event.preventDefault();
@@ -22,8 +23,9 @@ $("#login").click(function(event) {
       console.log("password: " + user.password);
       console.log("user 1: " + data.username);
       console.log("user 1 password: " + data.password);
+      id = data.password;
 
-      location.href = baseURL + "home/" + data.password;
+      location.href = baseURL + "home/" + id;
     });
   } catch (err) {
     console.log(err);
@@ -51,7 +53,8 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
-      location.href = baseURL + "home/" + data.password;
+      id = data.password;
+      location.href = baseURL + "home/" + id;
     });
   } catch (err) {
     console.log(err);
