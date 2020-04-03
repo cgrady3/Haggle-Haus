@@ -31,7 +31,7 @@ $(document).ready(function() {
     }
   };
 
-  api.grab(`${id}/${item}`).then(function(response) {
+  api.grab(id+ "/" + item).then(function(response) {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
