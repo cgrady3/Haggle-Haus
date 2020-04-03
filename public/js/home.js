@@ -1,9 +1,11 @@
+/*
 var baseURL = 'https://haggle-haus.herokuapp.com/';
 var currentURL = window.location.origin;
 var url = window.location.search;
 var urlParams = new URLSearchParams(url);
 var id = urlParams.get(id);
 var item = urlParams.get(item);
+*/
 
 $(document).ready(function() {
   // The API object contains methods for each kind of request we'll make
@@ -51,27 +53,21 @@ $(document).ready(function() {
       $("#current-offers").append(newRow);
     }
   });
-});
 
-$("#search").click(function(event) {
-  event.preventDefault();
-  var item = $("#search")
-    .val()
-    .trim();
-  location.href = baseURL + "home/" + id + "/" + item;
-});
+  var baseURL = window.location.href.split("home/")[0];
+  var user = window.location.href.split("home/")[1];
+  $("#home").click(function(event) {
+    event.preventDefault();
+    location.reload();
+  });
 
-$("#home").click(function(event) {
-  event.preventDefault();
-  location.href = currentURL;
-});
+  $("#userProfile").click(function(event) {
+    event.preventDefault();
+    location.href = baseURL + "user/" + user;
+  });
 
-$("#userProfile").click(function(event) {
-  event.preventDefault();
-  location.href = baseURL + 'user/' + id;
-});
-
-$("#about").click(function(event) {
-  event.preventDefault();
-  location.href = baseURL + 'aboutTheHaus';
+  $("#about").click(function(event) {
+    event.preventDefault();
+    location.href = baseURL + "aboutTheHaus";
+  });
 });

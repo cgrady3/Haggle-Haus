@@ -21,8 +21,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/users.html"));
   });
 
-   // Load about page
-   app.get("/aboutTheHaus", function(req, res) {
+  // Load about page
+  app.get("/aboutTheHaus/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/about.html"));
   });
 

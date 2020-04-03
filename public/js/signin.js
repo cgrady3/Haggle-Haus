@@ -4,7 +4,6 @@ var password;
 var user;
 var id;
 
-
 $("#login").click(function(event) {
   event.preventDefault();
   username = $("#userName")
@@ -55,7 +54,7 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
-      console.log(seshToken())
+      console.log(seshToken());
       id = data.password;
       location.href = baseURL + "home/" + id;
     });
