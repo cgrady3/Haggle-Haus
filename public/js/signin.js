@@ -4,6 +4,7 @@ var password;
 var user;
 var id;
 
+
 $("#login").click(function(event) {
   event.preventDefault();
   username = $("#userName")
@@ -19,6 +20,7 @@ $("#login").click(function(event) {
   try {
     $.post("/users/login", user).then(function(data) {
       console.log(data);
+
       console.log("username: " + user.username);
       console.log("password: " + user.password);
       console.log("user 1: " + data.username);
@@ -45,7 +47,7 @@ $("#newUser").click(function(event) {
   password = $("#password")
     .val()
     .trim();
-    console.log(username + "   " + password + "   " + password.length)
+  console.log(username + "   " + password + "   " + password.length);
   user = {
     username: username,
     password: password
@@ -53,14 +55,16 @@ $("#newUser").click(function(event) {
   try {
     $.post("/api/users", user).then(function(data) {
       console.log(data);
+      console.log(seshToken())
       id = data.password;
       location.href = baseURL + "home/" + id;
     });
   } catch (err) {
     console.log(err);
-     alert('username may be taken or the username and passwords entered is not 8-15 letters long')
+    alert(
+      "username may be taken or the username and passwords entered is not 8-15 letters long"
+    );
   }
   $("#userName").val("");
   $("#password").val("");
 });
-

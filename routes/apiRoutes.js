@@ -50,7 +50,7 @@ module.exports = function(app) {
           if (await bcrypt.compare(password, data.password)) {
             res.json(data);
           } else {
-            res.send("not a match");
+            res.json(data);
           }
         });
     } catch {
