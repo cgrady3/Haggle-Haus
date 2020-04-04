@@ -71,10 +71,20 @@ $(document).ready(function() {
   $("#add-item-listing").on("click", function(event) {
     event.preventDefault();
 
+    var itemName = $("#item-name")
+      .val()
+      .trim();
+    var parsedName = itemName.split(" ");
+    var searchName = "";
+    for (let i = 0; i < parsedName.length; i++) {
+      searchName += parsedName[i];
+    }
+
     var newItem = {
       name: $("#item-name")
         .val()
         .trim(),
+      searchName: searchName,
       description: $("#item-description")
         .val()
         .trim(),
