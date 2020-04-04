@@ -110,7 +110,7 @@ module.exports = function(app) {
     db.item
       .findAll({
         where: {
-          name: req.params.name
+          name: req.params.searchName
         }
       })
       .then(function(dbItems) {

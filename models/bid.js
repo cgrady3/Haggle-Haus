@@ -8,13 +8,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    searchBid: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
