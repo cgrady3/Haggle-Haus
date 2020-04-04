@@ -171,6 +171,23 @@ select:-webkit-autofill:focus {
   margin-top: 25px;
 }
 
+/* Modal card styling */
+
+#modal-card {
+  border-radius: 15px;
+}
+
+.modal-dialog {
+  max-width: 750px;
+}
+.modal-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  min-height: 100px;
+  justify-content: center;
+  background-color: rgb(16, 2, 42);
+}
+
 @media (max-width: 991px) {
   .logo {
     margin-bottom: 2rem;

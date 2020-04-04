@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "mt7nhcbcekv74dek",
-    "password": "uwxptkobkj4jbfvi",
-    "database": "aimjj8fjpvwewj0r",
-    "host": "zy4wtsaw3sjejnud.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "nnay581bB!",
+    "database": "haggle_db",
+    "host": "localhost",
     "port": 3306,
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "testdb",
+    "password": "nnay581bB!",
+    "database": "haggle_db",
     "host": "localhost",
     "port": 3306,
     "dialect": "mysql",
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "use_env_variable": "https://haggle-haus.herokuapp.com/",
     "dialect": "mysql"
   }
 }
