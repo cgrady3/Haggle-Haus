@@ -1,31 +1,32 @@
-/*
-var currentURL = window.location.origin;
-var url = window.location.search;
-var urlParams = new URLSearchParams(url);
-var id = urlParams.get(id);
-var item = urlParams.get(item);
-*/
+//var api = require('./api');
 
 $(document).ready(function() {
-  // Grabs user id from url
-  var url = window.location.href;
-  var parsedUrl = url.split("/");
-  var user = parsedUrl[4];
-
-  // API object
   var api = {
-    submit: function(path, sentData) {
-      return $.post("/api/" + path, sentData);
-    },
-    grab: function(path) {
+    submit: function(res, req) {
       return $.ajax({
-        url: "/api/" + path,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        type: "POST",
+        url: "/api/" + req,
+        data: JSON.stringify(res)
+      });
+    },
+    grab: function(req) {
+      return $.ajax({
+        url: "/api/" + req,
         type: "GET"
       });
     },
-    annihilate: function(path) {
+    grabItem: function(req) {
       return $.ajax({
-        url: "/api/" + path,
+        url: "/api/items" + req,
+        type: "GET"
+      });
+    },
+    annihilate: function(req) {
+      return $.ajax({
+        url: "/api/" + req,
         type: "DELETE"
       });
     }

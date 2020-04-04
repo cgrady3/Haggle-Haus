@@ -11,16 +11,11 @@ module.exports = function(app) {
   });
 
   //Get a specific user by ID.
-  app.get("/api/users/:id", function(req, res) {
-    db.users
-      .findOne({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(function(dbUsers) {
-        res.json(dbUsers);
-      });
+  app.get("/api/users/user", passport.authenticate("local-user"),
+   function(
+    req
+  ) {
+    return json(req.user.id);
   });
 
   app.post("/users", passport.authenticate("local-user"), function(req, res) {
