@@ -1,4 +1,5 @@
-/* eslint-disable camelcase */
+var bcrypt = require("bcryptjs");
+
 module.exports = function(sequelize, DataTypes) {
   var users = sequelize.define("users", {
     username: {
@@ -26,6 +27,16 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
+
+  users.prototype.verifyPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+
+  users.addHook("beforeCreate", function(user) {
+    user.password = bcrypt.hashSync(
+      user.password, 10
+    );
+  });
 
   return users;
 };
