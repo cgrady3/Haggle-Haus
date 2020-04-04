@@ -1,39 +1,6 @@
-/*
-var baseURL = 'https://haggle-haus.herokuapp.com/';
-var currentURL = window.location.origin;
-var url = window.location.search;
-var urlParams = new URLSearchParams(url);
-var id = urlParams.get(id);
-var item = urlParams.get(item);
-*/
+var api = require('./api');
 
 $(document).ready(function() {
-  // The API object contains methods for each kind of request we'll make
-  var api = {
-    submit: function(res, path) {
-      return $.ajax({
-        headers: {
-          "Content-Type": "application/json"
-        },
-        type: "POST",
-        url: "/api/" + path,
-        data: JSON.stringify(res)
-      });
-    },
-    grab: function(path) {
-      return $.ajax({
-        url: "/api/" + path,
-        type: "GET"
-      });
-    },
-    annihilate: function(path) {
-      return $.ajax({
-        url: "/api/" + path,
-        type: "DELETE"
-      });
-    }
-  };
-
   api.grab("items").then(function(response) {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
