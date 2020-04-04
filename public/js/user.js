@@ -1,12 +1,43 @@
-var api = require('./api');
+//var api = require('./api');
 
 $(document).ready(function() {
+  var api = {
+    submit: function(res, req) {
+      return $.ajax({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        type: "POST",
+        url: "/api/" + req,
+        data: JSON.stringify(res)
+      });
+    },
+    grab: function(req) {
+      return $.ajax({
+        url: "/api/" + req,
+        type: "GET"
+      });
+    },
+    grabItem: function(req) {
+      return $.ajax({
+        url: "/api/items" + req,
+        type: "GET"
+      });
+    },
+    annihilate: function(req) {
+      return $.ajax({
+        url: "/api/" + req,
+        type: "DELETE"
+      });
+    }
+  };
+
   // Grabs user id from url
   var url = window.location.href;
   var parsedUrl = url.split("/");
   var user = parsedUrl[4];
 
-  api.grab("items/user/" + user).then(function(response) {
+  api.grab("users/user").then(function(response) {
     console.log(response);
 
     for (var i = 0; i < response.length; i++) {
