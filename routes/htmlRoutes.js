@@ -1,4 +1,4 @@
-var isAuthenticated = require('../config/auth');
+var isAuthenticated = require("../config/auth");
 
 module.exports = function(app) {
   // Load welcome/sign-in page
@@ -12,13 +12,13 @@ module.exports = function(app) {
 
   // Load main market page and pass in signed-in users id
   app.get("/", function(req, res) {
-    res.render('home');
+    res.render("home", { current_user: req.user });
   });
 
   app.get("/users", isAuthenticated, function(req, res) {
     res.render("users", { current_user: req.user });
   });
-  
+
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/login");
@@ -26,7 +26,7 @@ module.exports = function(app) {
 
   // Load about page
   app.get("/about", function(req, res) {
-    res.render('about');
+    res.render("about");
   });
 
   // Render 404 page for any unmatched routes

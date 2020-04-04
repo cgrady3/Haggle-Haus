@@ -31,7 +31,7 @@ $(document).ready(function() {
     }
   };
 
-  api.grab("items/user/" + user).then(function(response) {
+  api.grab("items/user/" + current_user.id).then(function(response) {
     console.log(response);
 
     for (var i = 0; i < response.length; i++) {
@@ -48,7 +48,7 @@ $(document).ready(function() {
     }
   });
 
-  api.grab("bids/user/" + user).then(function(response) {
+  api.grab("bids/user/" + current_user.id).then(function(response) {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
@@ -86,7 +86,7 @@ $(document).ready(function() {
       amount: $("#item-desired-amount")
         .val()
         .trim(),
-      userId: user
+      userId: current_user.id
     };
 
     var image = $("#item-picture")

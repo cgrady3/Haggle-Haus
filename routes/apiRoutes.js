@@ -2,7 +2,6 @@ var db = require("../models");
 var bcrypt = require("bcryptjs");
 const passport = require("../config/passport-config");
 
-
 module.exports = function(app) {
   //Find all users. TODO: Don't let this grab passwords before production.
   app.get("/api/users", function(req, res) {
@@ -24,6 +23,12 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/users", passport.authenticate("local-user"), function(req, res) {
+    var user = req.user;
+    res.json(user);
+    console.log(req.user);
+  });
+
   app.post(
     "/login",
     passport.authenticate("local-login", {
@@ -31,7 +36,7 @@ module.exports = function(app) {
       failureRedirect: "/login"
     })
   );
-  
+
   app.post(
     "/register",
     passport.authenticate("local-signup", {
