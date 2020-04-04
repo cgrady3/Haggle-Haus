@@ -57,23 +57,6 @@ passport.use(
   )
 );
 
-passport.use(
-  "local-user",
-  new LocalStrategy(
-    {
-      usernameField: "username",
-      passReqToCallback: true
-    },
-    function(req, username, done) {
-      db.users
-        .findOne({ where: { username: username } })
-        .then(function(err, user) {
-          return done(null, user);
-        });
-    }
-  )
-);
-
 passport.serializeUser(function(user, done) {
   done(null, user);
 });

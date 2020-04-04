@@ -1,12 +1,3 @@
-/*
-var baseURL = 'https://haggle-haus.herokuapp.com/';
-var currentURL = window.location.origin;
-var url = window.location.search;
-var urlParams = new URLSearchParams(url);
-var id = urlParams.get(id);
-var item = urlParams.get(item);
-*/
-
 $(document).ready(function() {
   // The API object contains methods for each kind of request we'll make
   var api = {
@@ -21,6 +12,12 @@ $(document).ready(function() {
       });
     },
     grab: function(path) {
+      return $.ajax({
+        url: "/api/" + path,
+        type: "GET"
+      });
+    },
+    grabItem: function(path) {
       return $.ajax({
         url: "/api/" + path,
         type: "GET"
@@ -89,5 +86,15 @@ $(document).ready(function() {
     var owner = $(`#itemUser${id}`).text();
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
+  });
+
+  $('#search').click(function (e) { 
+    e.preventDefault();
+    
+    var item = $('#itemSearch').val().trim();
+    console.log(item)
+    var currentURL = window.location.origin;
+
+    location.href = currentURL + "/search/" + item;
   });
 });

@@ -1,11 +1,3 @@
-/*
-var currentURL = window.location.origin;
-var url = window.location.search;
-var urlParams = new URLSearchParams(url);
-var id = urlParams.get(id);
-var item = urlParams.get(item);
-*/
-
 $(document).ready(function() {
   // Grabs user id from url
   var url = window.location.href;
@@ -14,10 +6,23 @@ $(document).ready(function() {
 
   // API object
   var api = {
-    submit: function(path, sentData) {
-      return $.post("/api/" + path, sentData);
+    submit: function(res, path) {
+      return $.ajax({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        type: "POST",
+        url: "/api/" + path,
+        data: JSON.stringify(res)
+      });
     },
     grab: function(path) {
+      return $.ajax({
+        url: "/api/" + path,
+        type: "GET"
+      });
+    },
+    grabItem: function(path) {
       return $.ajax({
         url: "/api/" + path,
         type: "GET"
@@ -70,10 +75,20 @@ $(document).ready(function() {
   $("#add-item-listing").on("click", function(event) {
     event.preventDefault();
 
+    var itemName = $("#item-name")
+    .val()
+    .trim()
+    var parsedName = itemName.split(" ");
+    var searchName = '';
+    for (let i = 0; i < parsedName.length; i++) {
+      searchName += parsedName[i];
+    }
+
     var newItem = {
       name: $("#item-name")
         .val()
         .trim(),
+      searchName: searchName,
       description: $("#item-description")
         .val()
         .trim(),
