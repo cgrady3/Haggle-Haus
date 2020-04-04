@@ -18,12 +18,14 @@ module.exports = function(app) {
     return json(req.user.id);
   });
 
+  // only allow logged in users to view a user profile
   app.post("/users", passport.authenticate("local-user"), function(req, res) {
     var user = req.user;
     res.json(user);
     console.log(req.user);
   });
 
+  // user login
   app.post(
     "/login",
     passport.authenticate("local-login", {
@@ -32,6 +34,7 @@ module.exports = function(app) {
     })
   );
 
+  // register a user
   app.post(
     "/register",
     passport.authenticate("local-signup", {
@@ -70,7 +73,7 @@ module.exports = function(app) {
   });
 
   //Get a specific item by ID.
-  app.get("/api/items/:id", function(req, res) {
+  app.get("/api/item/:id", function(req, res) {
     db.item
       .findOne({
         where: {
@@ -98,10 +101,11 @@ module.exports = function(app) {
 
   //Get only items by a specific name
   app.get("/api/items/:name", function(req, res) {
+    console.log('api search  ' + name)
     db.item
       .findAll({
         where: {
-          name: req.params.name
+          name: req.params.searchName
         }
       })
       .then(function(dbItems) {

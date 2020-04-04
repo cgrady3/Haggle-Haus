@@ -19,6 +19,10 @@ module.exports = function(app) {
     res.render("users", { current_user: req.user });
   });
 
+  app.get("/search/:item", function(req, res) {
+    res.render("search", { current_user: req.user });
+  });
+
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/login");
