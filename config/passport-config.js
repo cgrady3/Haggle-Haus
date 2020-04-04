@@ -12,20 +12,26 @@ passport.use(
       passReqToCallback: true
     },
     function(req, username, password, done) {
-      db.users.findOne({ where: { username: username } }).then(function(err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (user) {
-          return done(null, false, { message: "username is already in use." });
-        }
-        db.users.create({
-          username: username,
-          password: password
-        }).then(function(dbUser) {
-          return done(null, dbUser);
+      db.users
+        .findOne({ where: { username: username } })
+        .then(function(err, user) {
+          if (err) {
+            return done(err);
+          }
+          if (user) {
+            return done(null, false, {
+              message: "username is already in use."
+            });
+          }
+          db.users
+            .create({
+              username: username,
+              password: password
+            })
+            .then(function(dbUser) {
+              return done(null, dbUser);
+            });
         });
-      });
     }
   )
 );
@@ -47,22 +53,6 @@ passport.use(
         }
         return done(null, user);
       });
-    }
-  )
-);
-
-passport.use(
-  "local-user",
-  new LocalStrategy(
-    {
-      usernameField: "username",
-    },
-    function(username, done) {
-      db.users
-        .findOne({ where: { username: username } })
-        .then(function(user) {
-          return done(null, user);
-        });
     }
   )
 );

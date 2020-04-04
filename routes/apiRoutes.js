@@ -18,6 +18,12 @@ module.exports = function(app) {
     return json(req.user.id);
   });
 
+  app.post("/users", passport.authenticate("local-user"), function(req, res) {
+    var user = req.user;
+    res.json(user);
+    console.log(req.user);
+  });
+
   app.post(
     "/login",
     passport.authenticate("local-login", {
