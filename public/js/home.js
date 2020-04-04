@@ -68,14 +68,6 @@ $(document).ready(function() {
     }
   });
 
-  $("#search").click(function(event) {
-    event.preventDefault();
-    var item = $("#search")
-      .val()
-      .trim();
-    location.href = currentURL + "/" + item;
-  });
-
   //on table row click, append info to modal
   $(document).on("click", ".itemRow", function(event) {
     event.preventDefault();
@@ -97,22 +89,5 @@ $(document).ready(function() {
     var owner = $(`#itemUser${id}`).text();
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
-  });
-
-  var baseURL = window.location.href.split("home/")[0];
-  var user = window.location.href.split("home/")[1];
-  $("#home").click(function(event) {
-    event.preventDefault();
-    location.reload();
-  });
-
-  $("#userProfile").click(function(event) {
-    event.preventDefault();
-    location.href = baseURL + "user/" + user;
-  });
-
-  $("#about").click(function(event) {
-    event.preventDefault();
-    location.href = baseURL + "aboutTheHaus/" + user;
   });
 });
