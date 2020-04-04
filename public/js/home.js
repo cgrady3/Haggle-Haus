@@ -68,6 +68,6 @@ $(document).ready(function() {
 
   $("#about").click(function(event) {
     event.preventDefault();
-    location.href = baseURL + "aboutTheHaus";
+    location.href = baseURL + "aboutTheHaus/" + user;
   });
 });
