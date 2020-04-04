@@ -1,4 +1,5 @@
 var db = require("../models");
+var bcrypt = require("bcryptjs");
 
 module.exports = function(app) {
   //Find all users. TODO: Don't let this grab passwords before production.
@@ -21,11 +22,40 @@ module.exports = function(app) {
       });
   });
 
-  //Create a new user.
-  app.post("/api/users", function(req, res) {
-    db.users.create(req.body).then(function(dbUsers) {
-      res.json(dbUsers);
-    });
+  //Create a new user with hashed password
+  app.post("/api/users", async function(req, res) {
+    var hashedPassword = await bcrypt.hash(req.body.password, 10);
+    var user = { username: req.body.username, password: hashedPassword };
+    try {
+      db.users.create(user).then(function(data) {
+        res.json(data);
+      });
+    } catch {
+      res.status(500).send("an error has occured");
+    }
+  });
+
+  // user login authentication
+  app.post("/users/login", async function(req, res) {
+    password = req.body.password;
+    username = req.body.username;
+    try {
+      db.users
+        .findOne({
+          where: {
+            username: username
+          }
+        })
+        .then(async function(data) {
+          if (await bcrypt.compare(password, data.password)) {
+            res.json(data);
+          } else {
+            res.json(data);
+          }
+        });
+    } catch {
+      res.status(500).send("incorrect username or password");
+    }
   });
 
   //Delete a user.
@@ -74,6 +104,7 @@ module.exports = function(app) {
   app.get("/api/items/user/:userid", function(req, res) {
     db.item
       .findAll({
+        include: [{ model: db.bid }],
         where: {
           userId: req.params.userid
         }

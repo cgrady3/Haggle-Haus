@@ -1,3 +1,11 @@
+/*
+var currentURL = window.location.origin;
+var url = window.location.search;
+var urlParams = new URLSearchParams(url);
+var id = urlParams.get(id);
+var item = urlParams.get(item);
+*/
+
 $(document).ready(function() {
   // Grabs user id from url
   var url = window.location.href;
@@ -25,15 +33,16 @@ $(document).ready(function() {
 
   api.grab("items/user/" + user).then(function(response) {
     console.log(response);
+
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
         "<tr> <td> <img src =" +
           response[i].picture +
           " alt='' border=3 height=50 width=50 </img></td> <td>" +
           response[i].name +
-          "</td> <td data-id = item-" +
-          i +
-          "> test</td> </tr>"
+          "</td> <td>" +
+          response[i].bids.length +
+          "</td > </tr > "
       );
       $("#user-offers").append(newRow);
     }
@@ -95,5 +104,21 @@ $(document).ready(function() {
     api.submit("items", newItem).then(function(response) {
       console.log(response);
     });
+  });
+
+  var baseURL = window.location.href.split("user/")[0];
+  $("#home").click(function(event) {
+    event.preventDefault();
+    location.href = baseURL + "home/" + user;
+  });
+
+  $("#userProfile").click(function(event) {
+    event.preventDefault();
+    location.reload();
+  });
+
+  $("#about").click(function(event) {
+    event.preventDefault();
+    location.href = baseURL + "aboutTheHaus/" + user;
   });
 });

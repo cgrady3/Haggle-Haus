@@ -22,6 +22,10 @@ h4 {
   margin: 0.6rem;
 }
 
+hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 footer {
   position: fixed;
   left: 0;
@@ -47,6 +51,11 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.about-me-text {
+  font-size: larger;
+}
+
 .contact-link {
   margin: 14px;
   margin-bottom: 20px;
@@ -80,6 +89,16 @@ select:-webkit-autofill:focus {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.input-fade {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.06);
+  font-family: "Marcellus SC", serif;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
 .logo {
   margin-right: 2rem;
 }
@@ -90,9 +109,26 @@ select:-webkit-autofill:focus {
   width: 230px;
 }
 
+#about {
+  cursor: pointer;
+}
+
 #add-item {
   padding-bottom: 32px;
   margin-bottom: 52px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+#add-item-listing {
+  background-color: lightsalmon;
+}
+
+#biddingWell {
+  margin-bottom: 50px;
+}
+
+#home {
+  cursor: pointer;
 }
 
 #main-signin {
@@ -125,6 +161,10 @@ select:-webkit-autofill:focus {
   background-color: #1e4b94;
   line-height: 0.8;
   float: right;
+}
+
+#userProfile {
+  cursor: pointer;
 }
 
 #home-card {
