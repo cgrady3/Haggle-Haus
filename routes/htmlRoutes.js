@@ -1,29 +1,37 @@
-var path = require("path");
+var isAuthenticated = require('../config/auth');
 
 module.exports = function(app) {
   // Load welcome/sign-in page
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+  app.get("/login", function(req, res) {
+    res.render("login");
+  });
+
+  app.get("/register", function(req, res) {
+    res.render("register");
   });
 
   // Load main market page and pass in signed-in users id
-  app.get("/home/:id", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
+  app.get("/", function(req, res) {
+    res.render('home');
   });
 
   // Load main market page and pass in signed-in users id
   app.get("/home/:id/:item", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/search.html"));
+    res.render('search');
   });
 
-  // Load users page by passing in their id
-  app.get("/user/:id", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/users.html"));
+  app.get("/users", isAuthenticated, function(req, res) {
+    res.render("users", { current_user: req.user });
+  });
+  
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/login");
   });
 
-   // Load about page
-   app.get("/aboutTheHaus", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/about.html"));
+  // Load about page
+  app.get("/aboutTheHaus/:id", function(req, res) {
+    res.render('about');
   });
 
   // Render 404 page for any unmatched routes

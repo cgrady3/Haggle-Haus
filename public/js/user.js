@@ -1,8 +1,10 @@
+/*
 var currentURL = window.location.origin;
 var url = window.location.search;
 var urlParams = new URLSearchParams(url);
 var id = urlParams.get(id);
 var item = urlParams.get(item);
+*/
 
 $(document).ready(function() {
   // Grabs user id from url
@@ -103,19 +105,20 @@ $(document).ready(function() {
       console.log(response);
     });
   });
-});
 
-$("#home").click(function(event) {
-  event.preventDefault();
-  location.href = baseURL + "home/" + id;
-});
+  var baseURL = window.location.href.split("user/")[0];
+  $("#home").click(function(event) {
+    event.preventDefault();
+    location.href = baseURL + "home/" + user;
+  });
 
-$("#userProfile").click(function(event) {
-  event.preventDefault();
-  location.href = currentURL;
-});
+  $("#userProfile").click(function(event) {
+    event.preventDefault();
+    location.reload();
+  });
 
-$("#about").click(function(event) {
-  event.preventDefault();
-  location.href = baseURL + "aboutTheHaus";
+  $("#about").click(function(event) {
+    event.preventDefault();
+    location.href = baseURL + "aboutTheHaus";
+  });
 });
