@@ -15,11 +15,6 @@ module.exports = function(app) {
     res.render('home');
   });
 
-  // Load main market page and pass in signed-in users id
-  app.get("/home/:id/:item", function(req, res) {
-    res.render('search');
-  });
-
   app.get("/users", isAuthenticated, function(req, res) {
     res.render("users", { current_user: req.user });
   });
@@ -30,7 +25,7 @@ module.exports = function(app) {
   });
 
   // Load about page
-  app.get("/aboutTheHaus/:id", function(req, res) {
+  app.get("/about", function(req, res) {
     res.render('about');
   });
 

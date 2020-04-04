@@ -105,20 +105,4 @@ $(document).ready(function() {
       console.log(response);
     });
   });
-
-  var baseURL = window.location.href.split("user/")[0];
-  $("#home").click(function(event) {
-    event.preventDefault();
-    location.href = baseURL + "home/" + user;
-  });
-
-  $("#userProfile").click(function(event) {
-    event.preventDefault();
-    location.reload();
-  });
-
-  $("#about").click(function(event) {
-    event.preventDefault();
-    location.href = baseURL + "aboutTheHaus/" + user;
-  });
 });

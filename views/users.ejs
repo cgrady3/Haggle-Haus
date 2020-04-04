@@ -43,20 +43,23 @@
         <div class="collapse navbar-collapse" id="HaggleHausNavbar">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" id="home">welcome <%= current_user.username %></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" id="home">Home </a>
+              <a href="/" method="GET" class="nav-link" id="home">Home </a>
             </li>
             <li>
-              <a class="nav-link" id="userProfile">Your Profile</a>
+              <a href="/users" method="GET" class="nav-link" id="userProfile">Profile</a>
               <span class="sr-only">(current)</span>
             </li>
             <li>
-              <a href="/logout" method="GET">Log out</a>
+              <a href="/about" method="GET" class="nav-link" id="about">About</a>
             </li>
             <li>
-              <a class="nav-link" id="about">About</a>
+              <a href="/logout" method="GET" class="nav-link" >Log Out</a>
+            </li>
+            <li>
+              <a href="/register" method="GET" class="nav-link" >Sign Up</a>
+            </li>
+            <li>
+              <a href="/login" method="GET" class="nav-link" >Sign In</a>
             </li>
           </ul>
         </div>
@@ -66,7 +69,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header">
-              Your Items
+              <%= current_user.username %>'s Items
               <table class="table" id="user-offers">
                 <thead>
                   <tr>
@@ -87,7 +90,7 @@
         <div class="col-lg-6">
           <div class="card">
             <div class="card-header">
-              Current Bids
+              <%= current_user.username %>'s Current Bids
               <table class="table" id="user-bids">
                 <thead>
                   <tr>
