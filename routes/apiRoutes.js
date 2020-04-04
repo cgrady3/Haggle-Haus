@@ -11,16 +11,11 @@ module.exports = function(app) {
   });
 
   //Get a specific user by ID.
-  app.get("/api/users/:id", function(req, res) {
-    db.users
-      .findOne({
-        where: {
-          id: req.params.id
-        }
-      })
-      .then(function(dbUsers) {
-        res.json(dbUsers);
-      });
+  app.get("/api/users/user", passport.authenticate("local-user"),
+   function(
+    req
+  ) {
+    return json(req.user.id);
   });
 
   // only allow logged in users to view a user profile

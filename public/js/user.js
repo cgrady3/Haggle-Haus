@@ -1,36 +1,32 @@
-$(document).ready(function() {
-  // Grabs user id from url
-  var url = window.location.href;
-  var parsedUrl = url.split("/");
-  var user = parsedUrl[4];
+//var api = require('./api');
 
-  // API object
+$(document).ready(function() {
   var api = {
-    submit: function(res, path) {
+    submit: function(res, req) {
       return $.ajax({
         headers: {
           "Content-Type": "application/json"
         },
         type: "POST",
-        url: "/api/" + path,
+        url: "/api/" + req,
         data: JSON.stringify(res)
       });
     },
-    grab: function(path) {
+    grab: function(req) {
       return $.ajax({
-        url: "/api/" + path,
+        url: "/api/" + req,
         type: "GET"
       });
     },
-    grabItem: function(path) {
+    grabItem: function(req) {
       return $.ajax({
-        url: "/api/" + path,
+        url: "/api/items" + req,
         type: "GET"
       });
     },
-    annihilate: function(path) {
+    annihilate: function(req) {
       return $.ajax({
-        url: "/api/" + path,
+        url: "/api/" + req,
         type: "DELETE"
       });
     }
@@ -76,10 +72,10 @@ $(document).ready(function() {
     event.preventDefault();
 
     var itemName = $("#item-name")
-    .val()
-    .trim()
+      .val()
+      .trim();
     var parsedName = itemName.split(" ");
-    var searchName = '';
+    var searchName = "";
     for (let i = 0; i < parsedName.length; i++) {
       searchName += parsedName[i];
     }
