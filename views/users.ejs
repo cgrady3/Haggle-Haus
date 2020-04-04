@@ -106,42 +106,77 @@
       </div>
 
       <!-- Form for submitting an item -->
+
       <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-center">
           <form method="post" id="add-item">
-            <label for="item-name">Item name:</label><br />
-            <input type="text" id="item-name" name="item-name" /><br />
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="form-group col-lg-3">
+                <label for="item-name">Item name:</label><br />
+                <input
+                  type="text"
+                  class="input-fade"
+                  id="item-name"
+                  name="item-name"
+                />
+              </div>
+              <div class="form-group col-lg-3">
+                <label for="item-desired-amount">Amount of item:</label><br />
+                <input
+                  type="text"
+                  id="item-desired-amount"
+                  class="input-fade"
+                  name="item-desired-amount"
+                />
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
+            <!--  -->
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="form-group col-lg-3">
+                <label for="barter-base">Item base barter:</label><br />
+                <input
+                  type="text"
+                  class="input-fade"
+                  id="barter-base"
+                  name="item-base"
+                />
+              </div>
+              <div class="form-group col-lg-3">
+                <label for="barter-base-amount">Item base barter amount:</label
+                ><br />
+                <input
+                  type="text"
+                  id="barter-base-amount"
+                  class="input-fade"
+                  name="barter-base-amount"
+                />
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
             <label for="item-description">Item description:</label><br />
-            <input
-              type="text"
-              id="item-description"
-              name="item-description"
-            /><br />
-            <label for="barter-base">Item base barter:</label><br />
-            <input type="text" id="barter-base" name="item-base" /><br />
-            <label for="barter-base-amount">Item base barter amount:</label
-            ><br />
-            <input
-              type="text"
-              id="barter-base-amount"
-              name="barter-base-amount"
-            />
+            <textarea rows="3" col="30" class="input-fade"> </textarea>
             <br />
-            <label for="item-desired-amount">Amount of item desired:</label
-            ><br />
-            <input
-              type="text"
-              id="item-desired-amount"
-              name="item-desired-amount"
-            /><br />
             <label for="item-picture">Link to item picture (optional):</label
             ><br />
-            <input type="text" id="item-picture" name="item-picture" /><br />
-            <input type="submit" id="add-item-listing" value="Submit" />
+            <input
+              type="text"
+              class="input-fade"
+              id="item-picture"
+              name="item-picture"
+            /><br />
+            <input
+              type="submit"
+              id="add-item-listing"
+              class="btn my-3"
+              value="Submit"
+            />
           </form>
         </div>
-        <div class="col-lg-3"></div>
+        <div class="col-lg-1"></div>
       </div>
     </div>
     <footer>

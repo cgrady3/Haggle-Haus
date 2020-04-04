@@ -38,20 +38,65 @@ $(document).ready(function() {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
-        "<tr> <td> <img src =" +
+        "<tr class= 'itemRow' data-number='" +
+          i +
+          "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
+          i +
+          "' src =" +
           response[i].picture +
-          " alt='' border=3 height=50 width=50 </img></td> <td>" +
+          " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
+          i +
+          "'>" +
           response[i].name +
-          "</td> <td>" +
+          "</td> <td id='itemDesc" +
+          i +
+          "'>" +
           response[i].description +
-          "</td> <td>" +
+          "</td> <td id='itemBaseBarter" +
+          i +
+          "'>" +
           response[i].base_barter_amount +
           " " +
           response[i].base_barter +
-          "</td> <td> <button class = 'bid-button'> Add Bid </button> </td> </tr>"
+          "</td> <td id='itemUser" +
+          i +
+          "'>" +
+          response[i].user.username +
+          "</td> </tr>"
       );
       $("#current-offers").append(newRow);
     }
+  });
+
+  $("#search").click(function(event) {
+    event.preventDefault();
+    var item = $("#search")
+      .val()
+      .trim();
+    location.href = currentURL + "/" + item;
+  });
+
+  //on table row click, append info to modal
+  $(document).on("click", ".itemRow", function(event) {
+    event.preventDefault();
+    var id = $(this).attr("data-number");
+    //img
+    var img = $(`#itemImg${id}`).attr("src");
+    $(".modal-body img").attr("src", img);
+
+    //name
+    var name = $(`#itemName${id}`).text();
+    $("#itemNameDiv").text(name);
+    $("#itemNameDiv").attr("class", "text-white");
+
+    //desc
+    var desc = $(`#itemDesc${id}`).text();
+    $("#itemDescDiv").text(desc);
+
+    //owner
+    var owner = $(`#itemUser${id}`).text();
+    $("#itemUserDiv").text(owner);
+    //email could be added if the users email is returned in the user response
   });
 
   var baseURL = window.location.href.split("home/")[0];
@@ -68,6 +113,6 @@ $(document).ready(function() {
 
   $("#about").click(function(event) {
     event.preventDefault();
-    location.href = baseURL + "aboutTheHaus";
+    location.href = baseURL + "aboutTheHaus/" + user;
   });
 });
