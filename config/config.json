@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "nnay581bB!",
+    "password": "password",
     "database": "haggle_db",
     "host": "localhost",
     "port": 3306,
