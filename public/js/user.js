@@ -1,5 +1,3 @@
-//var api = require('./api');
-
 $(document).ready(function() {
   var api = {
     submit: function(res, req) {
@@ -112,7 +110,7 @@ $(document).ready(function() {
     console.log(newItem);
 
     //   Submits the item
-    api.submit("items", newItem).then(function(response) {
+    api.submit(newItem, "items").then(function(response) {
       console.log(response);
     });
   });
