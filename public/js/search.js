@@ -29,12 +29,6 @@ $(document).ready(function() {
         type: "GET"
       });
     },
-    grabItem: function(path) {
-      return $.ajax({
-        url: "/api/" + path,
-        type: "GET"
-      });
-    },
     annihilate: function(path) {
       return $.ajax({
         url: "/api/" + path,

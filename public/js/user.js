@@ -3,6 +3,7 @@ $(document).ready(function() {
   var url = window.location.href;
   var parsedUrl = url.split("/");
   var user = parsedUrl[4];
+  var current_user;
 
   // API object
   var api = {
