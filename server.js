@@ -26,7 +26,7 @@ app.set("view engine", "ejs");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -46,10 +46,10 @@ db.sequelize
   .then(function() {
     app.listen(PORT, function() {
       console.log(
-        "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser."
-      ),
+        "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
         PORT,
-        PORT;
+        PORT
+      );
     });
   });
 
