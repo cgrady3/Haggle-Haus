@@ -1,5 +1,3 @@
-//var api = require('./api');
-
 $(document).ready(function() {
   var api = {
     submit: function(res, req) {
