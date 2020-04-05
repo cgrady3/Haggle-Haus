@@ -170,6 +170,7 @@ module.exports = function(app) {
   app.get("/api/bids/item/:itemid", function(req, res) {
     db.bid
       .findAll({
+        include: [{ model: db.users }],
         where: {
           itemId: req.params.itemid
         }

@@ -165,7 +165,13 @@
               <div class="col-lg-3"></div>
             </div>
             <label for="item-description">Item description:</label><br />
-            <textarea rows="3" col="30" class="input-fade" id="item-description"> </textarea>
+            <textarea
+              rows="3"
+              col="30"
+              class="input-fade"
+              id="item-description"
+            >
+            </textarea>
             <br />
             <label for="item-picture">Link to item picture (optional):</label
             ><br />
@@ -186,6 +192,55 @@
         <div class="col-lg-1"></div>
       </div>
     </div>
+    <div
+      class="modal fade"
+      id="bids-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="modal-card">
+          <div class="modal-header">
+            <h2 class="modal-title" class="text-white" id="itemNameDiv">
+              Placeholder
+            </h2>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row justify-content-center">
+                <h4>Bids on this item</h4>
+                <hr class = "w-100">
+              </div>
+              <div class = "row">
+                <table class="table" id="current-item-bids">
+                  <thead>
+                    <tr>
+                      <th scope="col">Image</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Owned By</th>
+                      <th scope="col">Accept</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="links">
         <a href="#" target="blank" class="contact-link">

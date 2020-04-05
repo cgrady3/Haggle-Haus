@@ -35,9 +35,13 @@ $(document).ready(function() {
 
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
-        "<tr> <td> <img src =" +
+        "<tr class = item-row data-toggle='modal' data-target='#bids-modal' data-id ='" +
+          response[i].id +
+          "'> <td> <img src =" +
           response[i].picture +
-          " alt='' border=3 height=50 width=50 </img></td> <td>" +
+          " alt='' border=3 height=50 width=50 </img></td> <td id = 'item-name-" +
+          response[i].id +
+          "'>" +
           response[i].name +
           "</td> <td>" +
           response[i].bids.length +
@@ -45,6 +49,50 @@ $(document).ready(function() {
       );
       $("#user-offers").append(newRow);
     }
+  });
+
+  $(document).on("click", ".item-row", function(event) {
+    event.preventDefault();
+    var id = $(this).attr("data-id");
+
+    //name
+    var name = $(`#item-name-${id}`).text();
+    $("#itemNameDiv").attr("class", "text-white");
+    $("#itemNameDiv").text(name);
+
+    api.grab("bids/item/" + id).then(function(response) {
+      console.log(response);
+      for (var i = 0; i < response.length; i++) {
+        var newRow = $(
+          "<tr class= 'bid-row' data-id ='" +
+            response[i].id +
+            "'> <td> <img id='bidImg" +
+            response[i].id +
+            "' src =" +
+            response[i].picture +
+            " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
+            response[i].id +
+            "'>" +
+            response[i].bid +
+            "</td> <td id='bidAmount" +
+            response[i].id +
+            "'>" +
+            response[i].amount +
+            "</td> <td id='itemDesc" +
+            response[i].id +
+            "'>" +
+            response[i].description +
+            "</td> <td id='itemOwnedBy" +
+            response[i].id +
+            "'>" +
+            response[i].user.username +
+            "</td> <td> <button class = 'btn accept-button bg-info' data-id =" +
+            response[i].id +
+            "> Accept </button> </td> </tr>"
+        );
+        $("#current-item-bids").append(newRow);
+      }
+    });
   });
 
   api.grab("bids/user/" + current_user.id).then(function(response) {
