@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //For some reason replacing the $(".user-name") on line 9,11,13 with userName (from line 3)_ cause an error on the user page... therefore I guess there is no point in declaring that var... Idk why it doesn't work
   var userName = $(".user-name")
     .text()
     .trim();
@@ -193,5 +194,7 @@ $(document).ready(function() {
     api.submit(newItem, "items").then(function(response) {
       console.log(response);
     });
+    //this updates the page to clear the form and also show the item we just added
+    location.reload();
   });
 });
