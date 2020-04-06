@@ -36,7 +36,9 @@ $(document).ready(function() {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
-        "<tr class= 'itemRow' data-number='" +
+        "<tr class= 'itemRow' data-api-id ='" +
+          response[i].id +
+          "' data-number='" +
           i +
           "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
           i +
@@ -70,6 +72,7 @@ $(document).ready(function() {
   $(document).on("click", ".itemRow", function(event) {
     event.preventDefault();
     var id = $(this).attr("data-number");
+    var apiId = $(this).attr("data-api-id");
     //img
     var img = $(`#itemImg${id}`).attr("src");
     $(".modal-body img").attr("src", img);
@@ -78,6 +81,7 @@ $(document).ready(function() {
     var name = $(`#itemName${id}`).text();
     $("#itemNameDiv").text(name);
     $("#itemNameDiv").attr("class", "text-white");
+    $("#itemNameDiv").attr("data-api-id", apiId);
 
     //desc
     var desc = $(`#itemDesc${id}`).text();
@@ -87,6 +91,36 @@ $(document).ready(function() {
     var owner = $(`#itemUser${id}`).text();
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
+  });
+
+  $(document).on("click", ".bid-button", function(event) {
+    event.preventDefault();
+    var newBid = {
+      bid: $("#bid-name")
+        .val()
+        .trim(),
+      amount: $("#bid-amount")
+        .val()
+        .trim(),
+      description: $("#bid-description")
+        .val()
+        .trim(),
+      itemId: $("#itemNameDiv").attr("data-api-id"),
+      userId: 1
+    };
+
+    var image = $("#bid-picture")
+      .val()
+      .trim();
+
+    //   If picture field is not blank, add picture
+    //   This ensures that the defaultValue will work if blank
+    if (!(image === "")) {
+      newBid.picture = image;
+    }
+    console.log(newBid);
+
+    api.submit(newBid, "bids");
   });
 
   $("#search").click(function(e) {
