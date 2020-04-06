@@ -1,198 +1,190 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8" />
-    <title>HaggleHaus</title>
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-    <!-- font awesome -->
-    <script
-      src="https://kit.fontawesome.com/0599685da4.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Latest compiled and minified CSS & JS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="/styles/styles.css" />
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="navbar navbar-expand-lg navbar-light" role="navigation">
-        <a class="navbar-brand" href="/">
-          <img src="/img/favicon.png" alt="Haggle Haus" class="navbar-logo" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#HaggleHausNavbar"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="HaggleHausNavbar">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a href="/" method="GET" class="nav-link" id="home">Home </a>
-            </li>
-            <li>
-              <a href="/users" method="GET" class="nav-link" id="userProfile"
-                >Profile</a
-              >
-              <span class="sr-only">(current)</span>
-            </li>
-            <li>
-              <a href="/about" method="GET" class="nav-link" id="about"
-                >About</a
-              >
-            </li>
-            <li>
-              <a href="/logout" method="GET" class="nav-link">Log Out</a>
-            </li>
-            <li>
-              <a href="/register" method="GET" class="nav-link">Sign Up</a>
-            </li>
-            <li>
-              <a href="/login" method="GET" class="nav-link">Sign In</a>
-            </li>
-          </ul>
+<head>
+  <meta charset="UTF-8" />
+  <title>HaggleHaus</title>
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/0599685da4.js" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="user-name">
+    <%= current_user.username %>
+  </div>
+  <div class="user-id"> 
+    <%= current_user.id %>
+  </div>
+  <div class="container">
+    <div class="navbar navbar-expand-lg navbar-light" role="navigation">
+      <a class="navbar-brand" href="/">
+        <img src="/img/favicon.png" alt="Haggle Haus" class="navbar-logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#HaggleHausNavbar"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="HaggleHausNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a href="/" method="GET" class="nav-link" id="home">Home </a>
+          </li>
+          <li>
+            <a href="/users" method="GET" class="nav-link" id="userProfile">Profile</a>
+            <span class="sr-only">(current)</span>
+          </li>
+          <li>
+            <a href="/about" method="GET" class="nav-link" id="about">About</a>
+          </li>
+          <li>
+            <a href="/logout" method="GET" class="nav-link">Log Out</a>
+          </li>
+          <li>
+            <a href="/register" method="GET" class="nav-link">Sign Up</a>
+          </li>
+          <li>
+            <a href="/login" method="GET" class="nav-link">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <%= current_user.username %>'s Items
+            <table class="table" id="user-offers">
+              <thead>
+                <tr>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Bid Offers</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="card-body" id="itemsWell">
+            <!-- your items will post here -->
+          </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <%= current_user.username %>'s Items
-              <table class="table" id="user-offers">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <%= current_user.username %>'s Current Bids
+            <table class="table" id="user-bids">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Your Bid</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="card-body" id="currentBidsWell">
+            <!-- current bids will post here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form for submitting an item -->
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 text-center">
+        <form method="post" id="add-item">
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="form-group col-lg-3">
+              <label for="item-name">Item name:</label><br />
+              <input type="text" class="input-fade" id="item-name" name="item-name" />
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="item-desired-amount">Amount of item:</label><br />
+              <input type="text" id="item-desired-amount" class="input-fade" name="item-desired-amount" />
+            </div>
+            <div class="col-lg-3"></div>
+          </div>
+          <!--  -->
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="form-group col-lg-3">
+              <label for="barter-base">Item base barter:</label><br />
+              <input type="text" class="input-fade" id="barter-base" name="item-base" />
+            </div>
+            <div class="form-group col-lg-3">
+              <label for="barter-base-amount">Item base barter amount:</label><br />
+              <input type="text" id="barter-base-amount" class="input-fade" name="barter-base-amount" />
+            </div>
+            <div class="col-lg-3"></div>
+          </div>
+          <label for="item-description">Item description:</label><br />
+          <textarea rows="3" col="30" class="input-fade" id="item-description">
+            </textarea>
+          <br />
+          <label for="item-picture">Link to item picture (optional):</label><br />
+          <input type="text" class="input-fade" id="item-picture" name="item-picture" /><br />
+          <input type="submit" id="add-item-listing" class="btn my-3" value="Submit" />
+        </form>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+  </div>
+  <div class="modal fade" id="bids-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" id="modal-card">
+        <div class="modal-header">
+          <h2 class="modal-title" class="text-white" id="itemNameDiv">
+            Placeholder
+          </h2>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <h4>Bids on this item</h4>
+              <hr class="w-100">
+            </div>
+            <div class="row">
+              <table class="table" id="current-item-bids">
                 <thead>
                   <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Bid Offers</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Owned By</th>
+                    <th scope="col">Accept</th>
                   </tr>
                 </thead>
                 <tbody></tbody>
               </table>
             </div>
-            <div class="card-body" id="itemsWell">
-              <!-- your items will post here -->
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">
+              Close
+            </button>
           </div>
         </div>
-
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-header">
-              <%= current_user.username %>'s Current Bids
-              <table class="table" id="user-bids">
-                <thead>
-                  <tr>
-                    <th scope="col">Item</th>
-                    <th scope="col">Your Bid</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-            <div class="card-body" id="currentBidsWell">
-              <!-- current bids will post here -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Form for submitting an item -->
-
-      <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10 text-center">
-          <form method="post" id="add-item">
-            <div class="row">
-              <div class="col-lg-3"></div>
-              <div class="form-group col-lg-3">
-                <label for="item-name">Item name:</label><br />
-                <input
-                  type="text"
-                  class="input-fade"
-                  id="item-name"
-                  name="item-name"
-                />
-              </div>
-              <div class="form-group col-lg-3">
-                <label for="item-desired-amount">Amount of item:</label><br />
-                <input
-                  type="text"
-                  id="item-desired-amount"
-                  class="input-fade"
-                  name="item-desired-amount"
-                />
-              </div>
-              <div class="col-lg-3"></div>
-            </div>
-            <!--  -->
-            <div class="row">
-              <div class="col-lg-3"></div>
-              <div class="form-group col-lg-3">
-                <label for="barter-base">Item base barter:</label><br />
-                <input
-                  type="text"
-                  class="input-fade"
-                  id="barter-base"
-                  name="item-base"
-                />
-              </div>
-              <div class="form-group col-lg-3">
-                <label for="barter-base-amount">Item base barter amount:</label
-                ><br />
-                <input
-                  type="text"
-                  id="barter-base-amount"
-                  class="input-fade"
-                  name="barter-base-amount"
-                />
-              </div>
-              <div class="col-lg-3"></div>
-            </div>
-            <label for="item-description">Item description:</label><br />
-            <textarea rows="3" col="30" class="input-fade" id="item-description"> </textarea>
-            <br />
-            <label for="item-picture">Link to item picture (optional):</label
-            ><br />
-            <input
-              type="text"
-              class="input-fade"
-              id="item-picture"
-              name="item-picture"
-            /><br />
-            <input
-              type="submit"
-              id="add-item-listing"
-              class="btn my-3"
-              value="Submit"
-            />
-          </form>
-        </div>
-        <div class="col-lg-1"></div>
       </div>
     </div>
+
     <footer>
       <div class="links">
         <a href="#" target="blank" class="contact-link">
-          <i
-            class="fab fa-facebook-square fa-2x mt-2"
-            title="Connect via Facebook"
-          ></i>
+          <i class="fab fa-facebook-square fa-2x mt-2" title="Connect via Facebook"></i>
           Facebook
         </a>
         <a href="#" target="blank" class="contact-link">
@@ -200,19 +192,13 @@
           Instagram
         </a>
         <a href="mailto:email@email.com?Subject=Hello" class="contact-link">
-          <i
-            class="fas fa-envelope-open-text fa-2x"
-            title="Connect via Email"
-          ></i>
+          <i class="fas fa-envelope-open-text fa-2x" title="Connect via Email"></i>
           email@email.com
         </a>
       </div>
       HaggleHaus &copy;
     </footer>
-    <script>
-      var current_user = <%-JSON.stringify(current_user)%>
-      console.log(current_user.id);
-    </script>
     <script src="/js/user.js" type="text/javascript"></script>
-  </body>
+</body>
+
 </html>

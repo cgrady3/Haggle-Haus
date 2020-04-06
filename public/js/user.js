@@ -1,4 +1,16 @@
 $(document).ready(function() {
+  var userName = $(".user-name")
+    .text()
+    .trim();
+  var userID = $(".user-id")
+    .text()
+    .trim();
+  $(".user-name").hide();
+  $(".user-id").hide();
+  $(".user-name").text("");
+  $(".user-id").text("");
+  console.log($(".user-name").text());
+  console.log($(".user-id").text());
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -16,10 +28,10 @@ $(document).ready(function() {
         type: "GET"
       });
     },
-    grabItem: function(req) {
+    update: function(req) {
       return $.ajax({
-        url: "/api/items" + req,
-        type: "GET"
+        url: "/api/" + req,
+        type: "PUT"
       });
     },
     annihilate: function(req) {
@@ -30,14 +42,18 @@ $(document).ready(function() {
     }
   };
 
-  api.grab("items/user/" + current_user.id).then(function(response) {
+  api.grab("items/user/" + userID).then(function(response) {
     console.log(response);
 
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
-        "<tr> <td> <img src =" +
+        "<tr class = item-row data-toggle='modal' data-target='#bids-modal' data-id ='" +
+          response[i].id +
+          "'> <td> <img src =" +
           response[i].picture +
-          " alt='' border=3 height=50 width=50 </img></td> <td>" +
+          " alt='' border=3 height=50 width=50 </img></td> <td id = 'item-name-" +
+          response[i].id +
+          "'>" +
           response[i].name +
           "</td> <td>" +
           response[i].bids.length +
@@ -47,7 +63,73 @@ $(document).ready(function() {
     }
   });
 
-  api.grab("bids/user/" + current_user.id).then(function(response) {
+  $(document).on("click", ".item-row", function(event) {
+    event.preventDefault();
+    var id = $(this).attr("data-id");
+
+    //name
+    var name = $(`#item-name-${id}`).text();
+    $("#itemNameDiv").attr("class", "text-white");
+    $("#itemNameDiv").text(name);
+
+    api.grab("bids/item/" + id).then(function(response) {
+      console.log(response);
+      for (var i = 0; i < response.length; i++) {
+        var newRow = $(
+          "<tr class= 'bid-row' data-id ='" +
+            response[i].id +
+            "'> <td> <img id='bidImg" +
+            response[i].id +
+            "' src =" +
+            response[i].picture +
+            " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
+            response[i].id +
+            "'>" +
+            response[i].bid +
+            "</td> <td id='bidAmount" +
+            response[i].id +
+            "'>" +
+            response[i].amount +
+            "</td> <td id='itemDesc" +
+            response[i].id +
+            "'>" +
+            response[i].description +
+            "</td> <td id='itemOwnedBy" +
+            response[i].id +
+            "'>" +
+            response[i].user.username +
+            "</td> <td> <button class = 'btn accept-button bg-primary' data-id =" +
+            response[i].id +
+            "> Accept </button> </td> </tr>"
+        );
+        $("#current-item-bids").append(newRow);
+      }
+    });
+  });
+
+  $(document).on("click", ".accept-button", function(event) {
+    var id = $(this).attr("data-id");
+    console.log(id);
+    $(this).removeClass("accept-button bg-primary");
+    $(this).addClass("cancel-button bg-info");
+    $(this).text("Cancel");
+    api.update("bids/accept/" + id).then(function(response) {
+      console.log(response);
+    });
+  });
+
+  $(document).on("click", ".cancel-button", function(event) {
+    var id = $(this).attr("data-id");
+    console.log(id);
+    $(this).removeClass("cancel-button bg-info");
+    $(this).addClass("accept-button bg-primary");
+    $(this).text("Accept");
+    api.update("bids/cancel/" + id).then(function(response) {
+      console.log(response);
+    });
+  });
+
+  api.grab("bids/user/" + userID).then(function(response) {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
@@ -95,7 +177,7 @@ $(document).ready(function() {
       amount: $("#item-desired-amount")
         .val()
         .trim(),
-      userId: current_user.id
+      userId: userID
     };
 
     var image = $("#item-picture")

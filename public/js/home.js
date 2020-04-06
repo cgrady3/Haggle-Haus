@@ -1,4 +1,16 @@
 $(document).ready(function() {
+  var userName = $(".user-name")
+    .text()
+    .trim();
+  var userID = $(".user-id")
+    .text()
+    .trim();
+  $(".user-name").hide();
+  $(".user-id").hide();
+  $(".user-name").text("");
+  $(".user-id").text("");
+  console.log($(".user-name").text());
+  console.log($(".user-id").text());
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -104,7 +116,7 @@ $(document).ready(function() {
         .val()
         .trim(),
       itemId: $("#itemNameDiv").attr("data-api-id"),
-      userId: 1
+      userId: userID
     };
 
     var image = $("#bid-picture")
@@ -124,40 +136,13 @@ $(document).ready(function() {
   $("#search").click(function(e) {
     e.preventDefault();
 
-    $("#current-offers").remove();
+    var item = $("#itemSearch")
+      .val()
+      .trim();
 
-    api.grabItems("items").then(function(response) {
-      console.log(response);
-      for (var i = 0; i < response.length; i++) {
-        var newRow = $(
-          "<tr class= 'itemRow' data-number='" +
-            i +
-            "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
-            i +
-            "' src =" +
-            response[i].picture +
-            " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
-            i +
-            "'>" +
-            response[i].name +
-            "</td> <td id='itemDesc" +
-            i +
-            "'>" +
-            response[i].description +
-            "</td> <td id='itemBaseBarter" +
-            i +
-            "'>" +
-            response[i].base_barter_amount +
-            " " +
-            response[i].base_barter +
-            "</td> <td id='itemUser" +
-            i +
-            "'>" +
-            response[i].user.username +
-            "</td> </tr>"
-        );
-        $("#current-offers").append(newRow);
-      }
-    });
+    var parsedItem = item.split(" ");
+    var searchItem = parsedItem.join("");
+
+    location.href = "search/" + searchItem;
   });
 });
