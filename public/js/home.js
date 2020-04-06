@@ -1,10 +1,16 @@
 $(document).ready(function() {
-  var userName = $('.user-name').text();
-  var userID = $('.user-id').text();
+  var userName = $(".user-name")
+    .text()
+    .trim();
+  var userID = $(".user-id")
+    .text()
+    .trim();
   $(".user-name").hide();
-  $('.user-id').hide();
-  console.log($('.user-name').text())
-  console.log($('.user-id').text())
+  $(".user-id").hide();
+  $(".user-name").text("");
+  $(".user-id").text("");
+  console.log($(".user-name").text());
+  console.log($(".user-id").text());
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -110,7 +116,7 @@ $(document).ready(function() {
         .val()
         .trim(),
       itemId: $("#itemNameDiv").attr("data-api-id"),
-      userId: 1
+      userId: userID
     };
 
     var image = $("#bid-picture")
@@ -135,8 +141,8 @@ $(document).ready(function() {
       .trim();
 
     var parsedItem = item.split(" ");
-    var searchItem = parsedItem.join('')
+    var searchItem = parsedItem.join("");
 
-    location.href = "search/" + searchItem
+    location.href = "search/" + searchItem;
   });
 });
