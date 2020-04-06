@@ -108,7 +108,11 @@ module.exports = function(app) {
         }
       })
       .then(function(dbItems) {
-        res.json(dbItems);
+        if (dbItem) {
+          res.json(dbItem);
+        } else {
+          res.send("not items found" );
+        }
       });
   });
 

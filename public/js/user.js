@@ -16,12 +16,6 @@ $(document).ready(function() {
         type: "GET"
       });
     },
-    grabItem: function(req) {
-      return $.ajax({
-        url: "/api/items" + req,
-        type: "GET"
-      });
-    },
     annihilate: function(req) {
       return $.ajax({
         url: "/api/" + req,
