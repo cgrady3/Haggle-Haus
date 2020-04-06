@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  var userName = $('.user-name').text();
+  var userID = $('.user-id').text();
+  $(".user-name").hide();
+  $('.user-id').hide();
+  console.log($('.user-name').text())
+  console.log($('.user-id').text())
   var baseURL = 'localhost:3000/' // 'https://haggle-haus.herokuapp.com/';
   var url = window.location.href;
   var parsedUrl = url.split("/");
