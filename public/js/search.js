@@ -1,16 +1,14 @@
 $(document).ready(function() {
+  var baseURL = 'localhost:3000/' // 'https://haggle-haus.herokuapp.com/';
   var url = window.location.href;
   var parsedUrl = url.split("/");
-  console.log(parsedUrl);
   var urlSearch = parsedUrl[4];
-  console.log(urlSearch);
   var parsedSearch = urlSearch.split("%20");
-  console.log(parsedSearch);
-  var item = "";
-  for (let i = 0; i < parsedSearch.length; i++) {
-    item += parsedSearch[i];
-  }
+  var item = parsedSearch.join('');
   console.log(item);
+
+  //search(item);
+
   // The API object contains methods for each kind of request we'll make
   var api = {
     submit: function(res, path) {
@@ -37,39 +35,41 @@ $(document).ready(function() {
     }
   };
 
-  api.grab("items/" + item).then(function(response) {
-    console.log(response);
-    for (var i = 0; i < response.length; i++) {
-      var newRow = $(
-        "<tr class= 'itemRow' data-number='" +
-          i +
-          "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
-          i +
-          "' src =" +
-          response[i].picture +
-          " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
-          i +
-          "'>" +
-          response[i].name +
-          "</td> <td id='itemDesc" +
-          i +
-          "'>" +
-          response[i].description +
-          "</td> <td id='itemBaseBarter" +
-          i +
-          "'>" +
-          response[i].base_barter_amount +
-          " " +
-          response[i].base_barter +
-          "</td> <td id='itemUser" +
-          i +
-          "'>" +
-          response[i].user.username +
-          "</td> </tr>"
-      );
-      $("#current-offers").append(newRow);
-    }
-  });
+  function search(item) {
+    api.grab("items/" + item).then(function(response) {
+      console.log(response);
+      for (var i = 0; i < response.length; i++) {
+        var newRow = $(
+          "<tr class= 'itemRow' data-number='" +
+            i +
+            "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
+            i +
+            "' src =" +
+            response[i].picture +
+            " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
+            i +
+            "'>" +
+            response[i].name +
+            "</td> <td id='itemDesc" +
+            i +
+            "'>" +
+            response[i].description +
+            "</td> <td id='itemBaseBarter" +
+            i +
+            "'>" +
+            response[i].base_barter_amount +
+            " " +
+            response[i].base_barter +
+            "</td> <td id='itemUser" +
+            i +
+            "'>" +
+            response[i].user.username +
+            "</td> </tr>"
+        );
+        $("#current-offers").append(newRow);
+      }
+    });
+  }
 
   //on table row click, append info to modal
   $(document).on("click", ".itemRow", function(event) {
@@ -92,5 +92,17 @@ $(document).ready(function() {
     var owner = $(`#itemUser${id}`).text();
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
+  });
+
+  $("#search").click(function(e) {
+    e.preventDefault();
+
+    var inputItem = $("#itemSearch")
+      .val()
+      .trim();
+    var parsedItem = inputItem.split(" ");
+    var searchItem = parsedItem.join('')
+
+    location.href = baseURL + "search/" + searchItem;
   });
 });

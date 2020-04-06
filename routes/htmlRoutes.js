@@ -19,7 +19,7 @@ module.exports = function(app) {
     res.render("users", { current_user: req.user });
   });
 
-  app.get("/search/:item", function(req, res) {
+  app.get("/search/:name", function(req, res) {
     res.render("search", { current_user: req.user });
   });
 
