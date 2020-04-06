@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  var baseURL = 'localhost:3000/' // 'https://haggle-haus.herokuapp.com/';
-
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -99,7 +97,6 @@ $(document).ready(function() {
     var parsedItem = item.split(" ");
     var searchItem = parsedItem.join('')
 
-    location.href = baseURL + "search/" + searchItem
-    console.log(baseURL + "search/" + searchItem);
+    location.href = "search/" + searchItem
   });
 });

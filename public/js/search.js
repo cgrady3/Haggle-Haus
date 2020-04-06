@@ -2,9 +2,7 @@ $(document).ready(function() {
   var baseURL = 'localhost:3000/' // 'https://haggle-haus.herokuapp.com/';
   var url = window.location.href;
   var parsedUrl = url.split("/");
-  var urlSearch = parsedUrl[4];
-  var parsedSearch = urlSearch.split("%20");
-  var item = parsedSearch.join('');
+  var item = parsedUrl[4];
   console.log(item);
 
   //search(item);
@@ -103,6 +101,6 @@ $(document).ready(function() {
     var parsedItem = inputItem.split(" ");
     var searchItem = parsedItem.join('')
 
-    location.href = baseURL + "search/" + searchItem;
+    window.location = baseURL + "search/" + searchItem;
   });
 });
