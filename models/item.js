@@ -51,7 +51,8 @@ module.exports = function(sequelize, DataTypes) {
     item.belongsTo(models.users, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "cascade"
     });
     item.hasMany(models.bid, {
       onDelete: "cascade"

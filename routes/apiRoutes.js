@@ -64,7 +64,7 @@ module.exports = function(app) {
   app.get("/api/items", function(req, res) {
     db.item
       .findAll({
-        include: [{ model: db.users }]
+        include: [{ model: db.users }, { model: db.bid }]
       })
       .then(function(dbItems) {
         res.json(dbItems);
