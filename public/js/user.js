@@ -16,6 +16,12 @@ $(document).ready(function() {
         type: "GET"
       });
     },
+    update: function(req) {
+      return $.ajax({
+        url: "/api/" + req,
+        type: "PUT"
+      });
+    },
     annihilate: function(req) {
       return $.ajax({
         url: "/api/" + req,
@@ -80,12 +86,34 @@ $(document).ready(function() {
             response[i].id +
             "'>" +
             response[i].user.username +
-            "</td> <td> <button class = 'btn accept-button bg-info' data-id =" +
+            "</td> <td> <button class = 'btn accept-button bg-primary' data-id =" +
             response[i].id +
             "> Accept </button> </td> </tr>"
         );
         $("#current-item-bids").append(newRow);
       }
+    });
+  });
+
+  $(document).on("click", ".accept-button", function(event) {
+    var id = $(this).attr("data-id");
+    console.log(id);
+    $(this).removeClass("accept-button bg-primary");
+    $(this).addClass("cancel-button bg-info");
+    $(this).text("Cancel");
+    api.update("bids/accept/" + id).then(function(response) {
+      console.log(response);
+    });
+  });
+
+  $(document).on("click", ".cancel-button", function(event) {
+    var id = $(this).attr("data-id");
+    console.log(id);
+    $(this).removeClass("cancel-button bg-info");
+    $(this).addClass("accept-button bg-primary");
+    $(this).text("Accept");
+    api.update("bids/cancel/" + id).then(function(response) {
+      console.log(response);
     });
   });
 

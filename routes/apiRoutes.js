@@ -111,7 +111,7 @@ module.exports = function(app) {
         if (dbItem) {
           res.json(dbItem);
         } else {
-          res.send("not items found" );
+          res.send("not items found");
         }
       });
   });
@@ -179,6 +179,24 @@ module.exports = function(app) {
           itemId: req.params.itemid
         }
       })
+      .then(function(dbBids) {
+        res.json(dbBids);
+      });
+  });
+
+  //Update a bid when accepted
+
+  app.put("/api/bids/accept/:id", function(req, res) {
+    db.bid
+      .update({ accepted: true }, { where: { id: req.params.id } })
+      .then(function(dbBids) {
+        res.json(dbBids);
+      });
+  });
+
+  app.put("/api/bids/cancel/:id", function(req, res) {
+    db.bid
+      .update({ accepted: false }, { where: { id: req.params.id } })
       .then(function(dbBids) {
         res.json(dbBids);
       });
