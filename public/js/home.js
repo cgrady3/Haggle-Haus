@@ -72,7 +72,9 @@ $(document).ready(function() {
           i +
           "'>" +
           response[i].user.username +
-          "</td> </tr>"
+          "</td> <td>" +
+          response[i].bids.length +
+          " </td> </tr>"
       );
       $("#current-offers").append(newRow);
     }
@@ -130,7 +132,9 @@ $(document).ready(function() {
     }
     console.log(newBid);
 
-    api.submit(newBid, "bids");
+    api.submit(newBid, "bids").then(function() {
+      location.reload();
+    });
   });
 
   $("#search").click(function(e) {

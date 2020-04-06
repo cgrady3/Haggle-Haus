@@ -44,7 +44,8 @@ module.exports = function(sequelize, DataTypes) {
     bid.belongsTo(models.item, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "cascade"
     });
   };
 

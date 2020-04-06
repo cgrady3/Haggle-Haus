@@ -46,7 +46,7 @@ $(document).ready(function() {
 
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
-        "<tr class = item-row data-toggle='modal' data-target='#bids-modal' data-id ='" +
+        "<tr class = item-row data-id ='" +
           response[i].id +
           "'> <td> <img src =" +
           response[i].picture +
@@ -54,26 +54,44 @@ $(document).ready(function() {
           response[i].id +
           "'>" +
           response[i].name +
-          "</td> <td>" +
+          "</td> <td id = 'see-bid-button-well-" +
+          response[i].id +
+          "'> <button class = 'btn see-bids-button' data-toggle='modal' data-target='#bids-modal' data-api-id ='" +
+          response[i].id +
+          "' id = 'see-bids-button-" +
+          response[i].id +
+          "'> Browse " +
           response[i].bids.length +
-          "</td > </tr > "
+          " bids </button>" +
+          "</td> <td> <button class = 'btn delete-item-button bg-danger' data-api-id =" +
+          response[i].id +
+          "> Delete </button></td> </tr > "
       );
       $("#user-offers").append(newRow);
+      if (response[i].bids.length === 0) {
+        $("#see-bid-button-well-" + response[i].id).empty();
+        $("#see-bid-button-well-" + response[i].id).text("No bids yet!");
+      }
+
+      if (response[i].bids.length === 1) {
+        $("#see-bids-button-" + response[i].id).text("Browse 1 bid");
+      }
     }
   });
 
-  $(document).on("click", ".item-row", function(event) {
+  $(document).on("click", ".see-bids-button", function(event) {
     event.preventDefault();
-    var id = $(this).attr("data-id");
+    var id = $(this).attr("data-api-id");
+    console.log(id);
 
     //name
     var name = $(`#item-name-${id}`).text();
     $("#itemNameDiv").attr("class", "text-white");
     $("#itemNameDiv").text(name);
-
     api.grab("bids/item/" + id).then(function(response) {
       console.log(response);
       for (var i = 0; i < response.length; i++) {
+        console.log("What?");
         var newRow = $(
           "<tr class= 'bid-row' data-id ='" +
             response[i].id +
@@ -132,7 +150,9 @@ $(document).ready(function() {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
-        "<tr> <td>" +
+        "<tr id = 'bid-row-" +
+          response[i].id +
+          "'> <td>" +
           response[i].item.amount +
           " " +
           response[i].item.name +
@@ -140,10 +160,35 @@ $(document).ready(function() {
           response[i].amount +
           " " +
           response[i].bid +
-          "</td></tr>"
+          "</td> <td> <p id = 'accept-status-" +
+          response[i].id +
+          "'>No </p> </td> <td> <button class = 'btn bg-danger delete-bid-button' data-api-id = '" +
+          response[i].id +
+          "' id = 'delete-bid-button-" +
+          response[i].id +
+          "'>Delete</button> </td> </tr>"
       );
       $("#user-bids").append(newRow);
+      if (response[i].accepted === true) {
+        $("#accept-status-" + response[i].id).text("Yes");
+      }
     }
+  });
+
+  $(document).on("click", ".delete-bid-button", function(event) {
+    event.preventDefault();
+    var id = $(this).attr("data-api-id");
+    api.annihilate("bids/" + id).then(function() {
+      location.reload();
+    });
+  });
+
+  $(document).on("click", ".delete-item-button", function(event) {
+    event.preventDefault();
+    var id = $(this).attr("data-api-id");
+    api.annihilate("items/" + id).then(function() {
+      location.reload();
+    });
   });
 
   // Grabs form information to post to items API

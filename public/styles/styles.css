@@ -53,7 +53,8 @@ select:-webkit-autofill:focus {
 }
 
 .about-me-text {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .contact-link {
@@ -107,6 +108,10 @@ select:-webkit-autofill:focus {
   float: left !important;
   height: 230px;
   width: 230px;
+}
+
+.see-bids-button {
+  background-color: lightsalmon;
 }
 
 #about {
