@@ -7,14 +7,16 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
       validate: {
-        len: [8, 15]
+        len: [8, 15],
+        is: ["^[a-z]+$",'i']
       }
     },
     password: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [8]
+        len: [8],
+        is: ["^[a-z]+$",'i']
       }
     }
   });

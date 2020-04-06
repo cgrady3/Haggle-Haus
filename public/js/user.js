@@ -7,8 +7,6 @@ $(document).ready(function() {
     .trim();
   $(".user-name").hide();
   $(".user-id").hide();
-  $(".user-name").text("");
-  $(".user-id").text("");
   console.log($(".user-name").text());
   console.log($(".user-id").text());
   var api = {
