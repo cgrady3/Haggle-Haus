@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  var userName = $('.user-name').text();
+  var userID = $('.user-id').text();
+  $(".user-name").hide();
+  $('.user-id').hide();
+  console.log($('.user-name').text())
+  console.log($('.user-id').text())
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -156,4 +162,6 @@ $(document).ready(function() {
       console.log(response);
     });
   });
+
+
 });
