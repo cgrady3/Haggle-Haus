@@ -11,8 +11,7 @@ module.exports = function(app) {
   });
 
   //Get a specific user by ID.
-  app.get("/api/users/user", passport.authenticate("local-user"),
-   function(
+  app.get("/api/users/user", passport.authenticate("local-user"), function(
     req
   ) {
     return json(req.user.id);
@@ -101,7 +100,7 @@ module.exports = function(app) {
 
   //Get only items by a specific name
   app.get("/api/items/:name", function(req, res) {
-    console.log('api search  ' + name)
+    console.log("api search  " + name);
     db.item
       .findAll({
         where: {
@@ -126,7 +125,7 @@ module.exports = function(app) {
 
   //Post a bid for an item from a user
   app.post("/api/bids", function(req, res) {
-    db.Bid.create(req.body).then(function(dbBids) {
+    db.bid.create(req.body).then(function(dbBids) {
       res.json(dbBids);
     });
   });

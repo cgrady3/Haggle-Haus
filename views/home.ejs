@@ -121,11 +121,48 @@
                     src="/img/Placeholder.png"
                     alt=""
                   />
-                  <div class="col-md-8" id="itemDescDiv">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Laborum minima aliquam dolor, numquam ratione aperiam
-                    voluptas placeat et dolore in, sapiente maxime temporibus
-                    esse, adipisci sed unde voluptate laudantium cupiditate.
+                  <div class="col-md-8">
+                    <div class = "row" id ="itemDescDiv">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Laborum minima aliquam dolor, numquam ratione aperiam
+                      voluptas placeat et dolore in, sapiente maxime temporibus
+                      esse, adipisci sed unde voluptate laudantium cupiditate.
+                    </div>
+                    <div class = "row">
+                      <hr class = "w-100">
+                      Want this item? Make your bid!
+                      <hr class="w-100">
+                    </div>
+                    <div class = "row">
+                      <div class = "col-lg-11 text-center">
+                        <form method="post" id="add-bid-form">
+                          <div class = "row">
+                            <div class = "form-group col-lg-5">
+                              <label for="bid-name">Bid Name:</label>
+                              <input type="text" class = "input-fade" id="bid-name" name="bid-name">
+                            </div>
+                            <div class = "col-lg-1"></div>
+                            <div class = "form-group col-lg-5">
+                              <label for="bid-amount">Amount</label>
+                              <input type="text" class = "input-fade" id = "bid-amount" name="bid-amount">
+                            </div>
+                            <div class = "col-lg-1"></div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-lg-6">
+                              <label for="bid-picture">Picture link (Optional):</label>
+                              <input type="text" class="input-fade" id="bid-picture" name="bid-picture">
+                            </div>
+                            <div class="form-group col-lg-5">
+                              <label for="bid-description">Brief description</label>
+                              <input class="input-fade" id="bid-description">
+                            </div>
+                            <div class = "col-lg-1"></div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class = "col-lg-1"></div>
+                    </div>
                   </div>
                 </div>
                 <div id="itemUserDiv">Owners Name</div>
