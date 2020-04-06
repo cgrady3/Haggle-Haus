@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   // Load main market page and pass in signed-in users id
-  app.get("/", function(req, res) {
+  app.get("/", isAuthenticated, function(req, res) {
     res.render("home", { current_user: req.user });
   });
 
@@ -19,7 +19,7 @@ module.exports = function(app) {
     res.render("users", { current_user: req.user });
   });
 
-  app.get("/search/:name", function(req, res) {
+  app.get("/search/:name", isAuthenticated, function(req, res) {
     res.render("search", { current_user: req.user });
   });
 

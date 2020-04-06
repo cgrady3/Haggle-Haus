@@ -100,7 +100,7 @@ $(document).ready(function() {
       .trim();
     var parsedItem = inputItem.split(" ");
     var searchItem = parsedItem.join('')
-
-    window.location = baseURL + "search/" + searchItem;
+console.log(searchItem)
+    window.location.replace(baseURL + "search/" + searchItem);
   });
 });
