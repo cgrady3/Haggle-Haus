@@ -1,10 +1,16 @@
 $(document).ready(function() {
-  var userName = $('.user-name').text();
-  var userID = $('.user-id').text();
+  var userName = $(".user-name")
+    .text()
+    .trim();
+  var userID = $(".user-id")
+    .text()
+    .trim();
   $(".user-name").hide();
-  $('.user-id').hide();
-  console.log($('.user-name').text())
-  console.log($('.user-id').text())
+  $(".user-id").hide();
+  $(".user-name").text("");
+  $(".user-id").text("");
+  console.log($(".user-name").text());
+  console.log($(".user-id").text());
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -36,7 +42,7 @@ $(document).ready(function() {
     }
   };
 
-  api.grab("items/user/" + current_user.id).then(function(response) {
+  api.grab("items/user/" + userID).then(function(response) {
     console.log(response);
 
     for (var i = 0; i < response.length; i++) {
@@ -123,7 +129,7 @@ $(document).ready(function() {
     });
   });
 
-  api.grab("bids/user/" + current_user.id).then(function(response) {
+  api.grab("bids/user/" + userID).then(function(response) {
     console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
@@ -171,7 +177,7 @@ $(document).ready(function() {
       amount: $("#item-desired-amount")
         .val()
         .trim(),
-      userId: current_user.id
+      userId: userID
     };
 
     var image = $("#item-picture")
@@ -190,6 +196,4 @@ $(document).ready(function() {
       console.log(response);
     });
   });
-
-
 });
