@@ -250,12 +250,12 @@ $(document).ready(function() {
     //this updates the page to clear the form and also show the item we just added
     location.reload();
   });
-  $('#open-form').click(function (e) { 
+  $("#open-form").click(function(e) {
     e.preventDefault();
     $("#bid-form").show();
     $("#open-form").hide();
   });
-  $('#close-form').click(function (e) { 
+  $("#close-form").click(function(e) {
     e.preventDefault();
     $("#bid-form").hide();
     $("#open-form").show();

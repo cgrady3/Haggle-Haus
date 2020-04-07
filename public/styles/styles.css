@@ -153,7 +153,7 @@ select:-webkit-autofill:focus {
 }
 
 .login-long {
-  margin-left: 40%;
+  margin-left: 44.5%;
   height: 25px;
   width: 125px;
   font-size: 14px;
@@ -163,6 +163,17 @@ select:-webkit-autofill:focus {
   color: #ece4da;
   line-height: 0.8;
   margin-top: -5px;
+}
+
+.bg-danger{
+  margin-right: 8px;
+  height: 25px;
+  width: 75px;
+  font-size: 14px;
+  border-radius: 2px;
+  line-height: 0.8;
+  margin-top: -5px;
+  color: #ece4da;
 }
 
 #search {
@@ -194,12 +205,20 @@ select:-webkit-autofill:focus {
 .modal-dialog {
   max-width: 750px;
 }
+
 .modal-header {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   min-height: 100px;
   justify-content: center;
-  background-color: rgb(16, 2, 42);
+  background-color: rgba(143, 98, 31, .7);
+}
+
+.close-modal{
+  margin-left: 45% !important;}
+
+.text-white{
+  margin-top: 2% !important;
 }
 
 @media (max-width: 991px) {
