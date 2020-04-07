@@ -82,7 +82,6 @@ $(document).ready(function() {
   $(document).on("click", ".see-bids-button", function(event) {
     event.preventDefault();
     var id = $(this).attr("data-api-id");
-    console.log(id);
 
     //name
     var name = $(`#item-name-${id}`).text();
@@ -90,8 +89,8 @@ $(document).ready(function() {
     $("#itemNameDiv").text(name);
     api.grab("bids/item/" + id).then(function(response) {
       console.log(response);
+      $("#current-item-bids").empty();
       for (var i = 0; i < response.length; i++) {
-        console.log("What?");
         var newRow = $(
           "<tr class= 'bid-row' data-id ='" +
             response[i].id +
@@ -117,9 +116,21 @@ $(document).ready(function() {
             response[i].user.username +
             "</td> <td> <button class = 'btn accept-button bg-primary' data-id =" +
             response[i].id +
-            "> Accept </button> </td> </tr>"
+            " id = 'accept-button-" +
+            response[i].id +
+            "'> Accept </button> </td> </tr>"
         );
         $("#current-item-bids").append(newRow);
+        if (response[i].accepted === true) {
+          console.log("I got here");
+          $("#accept-button-" + response[i].id).removeClass(
+            "bg-primary accept-button"
+          );
+          $("#accept-button-" + response[i].id).addClass(
+            "cancel-button bg-info"
+          );
+          $("#accept-button-" + response[i].id).text("Cancel");
+        }
       }
     });
   });
