@@ -139,8 +139,8 @@ $(document).ready(function() {
       .trim();
 
     var parsedItem = item.split(" ");
-    var searchItem = parsedItem.join("");
-    searchItem.toLowerCase();
+    var searchedItem = parsedItem.join("");
+    var searchItem = searchedItem.toLowerCase();
 
     location.href = "search/" + searchItem;
   });
@@ -152,8 +152,8 @@ $(document).ready(function() {
         .trim();
 
       var parsedItem = item.split(" ");
-      var searchItem = parsedItem.join("");
-      searchItem.toLowerCase();
+      var searchedItem = parsedItem.join("");
+      var searchItem = searchedItem.toLowerCase();
 
       location.href = "search/" + searchItem;
     }

@@ -10,8 +10,6 @@ $(document).ready(function() {
   var item = parsedUrl[4];
   console.log(item);
 
-  search(item);
-
   // The API object contains methods for each kind of request we'll make
   var api = {
     submit: function(res, path) {
@@ -96,4 +94,6 @@ $(document).ready(function() {
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
   });
+
+  search(item);
 });
