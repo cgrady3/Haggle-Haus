@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var userID = $(".user-id").text();
+  var userID = $(".user-id").text().trim();
   $(".user-name").hide();
   $(".user-id").hide();
   console.log(userID);
@@ -136,7 +136,7 @@ $(document).ready(function() {
       errorArray.push("The amount must be between 1 and 20.");
     }
 
-    if (newBid.name === "") {
+    if (newBid.bid === "") {
       errorArray.push("The name cannot be blank.");
     }
 
