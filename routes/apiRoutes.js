@@ -110,7 +110,7 @@ module.exports = function(app) {
         if (dbItem) {
           res.json(dbItem);
         } else {
-          res.send("not items found");
+          res.send("no items found");
         }
       });
   });
