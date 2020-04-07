@@ -201,7 +201,7 @@ $(document).ready(function() {
   // Grabs form information to post to items API
   $("#add-item-listing").on("click", function(event) {
     event.preventDefault();
-
+    var errorArray = [];
     var itemName = $("#item-name")
       .val()
       .trim();
@@ -243,12 +243,31 @@ $(document).ready(function() {
     }
     console.log(newItem);
 
-    //   Submits the item
-    api.submit(newItem, "items").then(function(response) {
-      console.log(response);
-    });
-    //this updates the page to clear the form and also show the item we just added
-    location.reload();
+    if (newItem.description === "") {
+      console.log("Yo");
+      errorArray.push("The description cannot be blank.");
+    }
+
+    if (newItem.amount < 1 || newItem.amount > 20) {
+      errorArray.push("The item amount must be between 1 and 20.");
+    }
+
+    if (newItem.name === "") {
+      errorArray.push("The item name cannot be blank.");
+    }
+
+    if (errorArray.length === 0) {
+      api.submit(newItem, "items").then(function(response) {
+        console.log(response);
+        //this updates the page to clear the form and also show the item we just added
+        location.reload();
+      });
+    } else {
+      for (let i = 0; i < errorArray.length; i++) {
+        var newError = $("<p>" + errorArray[i] + "</p>");
+        $("#error-warning").append(newError);
+      }
+    }
   });
   $("#open-form").click(function(e) {
     e.preventDefault();
@@ -257,6 +276,7 @@ $(document).ready(function() {
   });
   $("#close-form").click(function(e) {
     e.preventDefault();
+    $("#error-warning").empty();
     $("#bid-form").hide();
     $("#open-form").show();
   });
