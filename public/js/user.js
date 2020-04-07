@@ -110,7 +110,7 @@ $(document).ready(function() {
             response[i].id +
             "'>" +
             response[i].user.username +
-            "</td> <td> <button class = 'btn accept-button bg-primary login' data-id =" +
+            "</td> <td> <button class = 'btn accept-button bg-primary login-long' data-id =" +
             response[i].id +
             " id = 'accept-button-" +
             response[i].id +
