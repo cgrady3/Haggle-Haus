@@ -4,6 +4,7 @@ $(document).ready(function() {
     .trim();
   $(".user-name").hide();
   $(".user-id").hide();
+  $("#bid-form").hide();
   console.log(userID);
   var api = {
     submit: function(res, req) {
@@ -248,5 +249,15 @@ $(document).ready(function() {
     });
     //this updates the page to clear the form and also show the item we just added
     location.reload();
+  });
+  $('#open-form').click(function (e) { 
+    e.preventDefault();
+    $("#bid-form").show();
+    $("#open-form").hide();
+  });
+  $('#close-form').click(function (e) { 
+    e.preventDefault();
+    $("#bid-form").hide();
+    $("#open-form").show();
   });
 });

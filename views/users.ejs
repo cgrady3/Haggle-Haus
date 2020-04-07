@@ -19,7 +19,7 @@
   <div class="user-name">
     <%= current_user.username %>
   </div>
-  <div class="user-id"> 
+  <div class="user-id">
     <%= current_user.id %>
   </div>
   <div class="container">
@@ -49,7 +49,6 @@
         </ul>
       </div>
     </div>
-
     <div class="row">
       <div class="col-lg-6">
         <div class="card">
@@ -97,10 +96,9 @@
     </div>
 
     <!-- Form for submitting an item -->
-
-    <div class="row">
-      <div class="col-lg-1"></div>
-      <div class="col-lg-10 text-center">
+    <button type="submit" id="open-form" class="btn btn-sm login-long">Add Barter Item</button>
+    <div class="row" id="bid-form">
+      <div class="col text-center">
         <form method="post" id="add-item">
           <div class="row">
             <div class="col-lg-3"></div>
@@ -134,6 +132,7 @@
           <label for="item-picture">Link to item picture (optional):</label><br />
           <input type="text" class="input-fade" id="item-picture" name="item-picture" /><br />
           <input type="submit" id="add-item-listing" class="btn my-3 login" value="Submit" />
+          <button class="btn my-3 login" type="submit" id="close-form">Close</button>
         </form>
       </div>
       <div class="col-lg-1"></div>
