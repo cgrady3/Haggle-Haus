@@ -1,10 +1,8 @@
 $(document).ready(function() {
-  var userName = $('.user-name').text();
-  var userID = $('.user-id').text();
+  var userID = $(".user-id").text();
   $(".user-name").hide();
-  $('.user-id').hide();
-  console.log(userName)
-  console.log(userID)
+  $(".user-id").hide();
+  console.log(userID);
   var url = window.location.href;
   var parsedUrl = url.split("/");
   var item = parsedUrl[4];
@@ -93,6 +91,64 @@ $(document).ready(function() {
     var owner = $(`#itemUser${id}`).text();
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
+  });
+
+  $(document).on("click", ".bid-button", function(event) {
+    event.preventDefault();
+    $("#error-warning").empty();
+    var errorArray = [];
+    var newBid = {
+      bid: $("#bid-name")
+        .val()
+        .trim(),
+      amount: $("#bid-amount")
+        .val()
+        .trim(),
+      description: $("#bid-description")
+        .val()
+        .trim(),
+      itemId: $("#itemNameDiv").attr("data-api-id"),
+      userId: userID
+    };
+
+    var image = $("#bid-picture")
+      .val()
+      .trim();
+
+    //   If picture field is not blank, add picture
+    //   This ensures that the defaultValue will work if blank
+    if (!(image === "")) {
+      newBid.picture = image;
+    }
+    console.log(newBid);
+
+    if (newBid.description.length < 20 || newBid.description.length > 140) {
+      errorArray.push("The description must be between 20 and 140 characters.");
+    }
+
+    if (newBid.amount < 1 || newBid.amount > 20) {
+      errorArray.push("The amount must be between 1 and 20.");
+    }
+
+    if (newBid.name === "") {
+      errorArray.push("The name cannot be blank.");
+    }
+
+    if (errorArray.length === 0) {
+      api.submit(newBid, "bids").then(function() {
+        location.reload();
+      });
+    } else {
+      for (let i = 0; i < errorArray.length; i++) {
+        var newError = $("<p>" + errorArray[i] + "</p>");
+        $("#error-warning").append(newError);
+      }
+    }
+  });
+
+  $(document).on("click", "#close-button", function(event) {
+    event.preventDefault();
+    $("#error-warning").empty();
   });
 
   search(item);
