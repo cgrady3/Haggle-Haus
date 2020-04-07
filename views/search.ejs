@@ -20,7 +20,7 @@
   <div class="user-name">
     <%= current_user.username %>
   </div>
-  <div class="user-id"> 
+  <div class="user-id">
     <%= current_user.id %>
   </div>
   <div class="container">
@@ -46,13 +46,7 @@
             <a href="/about" method="GET" class="nav-link" id="about">About</a>
           </li>
           <li>
-            <a href="/logout" method="GET" class="nav-link" >Log out</a>
-          </li>
-          <li>
-            <a href="/register" method="GET" class="nav-link" >Sign Up</a>
-          </li>
-          <li>
-            <a href="/login" method="GET" class="nav-link" >Sign In</a>
+            <a href="/logout" method="GET" class="nav-link">Log out</a>
           </li>
         </ul>
       </div>
@@ -67,12 +61,12 @@
               <h4>The greatest resource for trading goods</h4>
             </div>
             <div class="form-group col-3">
-              <a href="/" method="GET" class="nav-link" id="clear" >Clear Search</a>
+              <a href="/" method="GET" class="nav-link" id="clear">Clear Search</a>
             </div>
           </div>
           <div class="card-body" id="biddingWell">
-            <!-- All bids post here-->
-            <table class="table" id="current-offers">
+             <!-- All bids post here-->
+             <table class="table" id="current-offers">
               <thead>
                 <tr>
                   <th scope="col">Image</th>
@@ -80,6 +74,7 @@
                   <th scope="col">Description</th>
                   <th scope="col">Suggested Bid</th>
                   <th scope="col">Owned By</th>
+                  <th scope="col">Bids</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -98,29 +93,69 @@
             <div class="container-fluid">
               <div class="row">
                 <img class="col-md-4 float-left" src="/img/Placeholder.png" alt="" />
-                <div class="col-md-8" id="itemDescDiv">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Laborum minima aliquam dolor, numquam ratione aperiam
-                  voluptas placeat et dolore in, sapiente maxime temporibus
-                  esse, adipisci sed unde voluptate laudantium cupiditate.
+                <div class="col-md-8">
+                  <div class="row" id="itemDescDiv">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Laborum minima aliquam dolor, numquam ratione aperiam
+                    voluptas placeat et dolore in, sapiente maxime temporibus
+                    esse, adipisci sed unde voluptate laudantium cupiditate.
+                  </div>
+                  <div class="row">
+                    <hr class="w-100" />
+                    Want this item? Make your bid!
+                    <hr class="w-100" />
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-8 text-center">
+                      <form method="post" id="add-bid-form">
+                        <div class="row">
+                          <div class="form-group col-lg-8">
+                            <input type="text" class="input-fade" id="bid-name" name="bid-name"
+                              placeholder="Bid Title" />
+                          </div>
+                          <div class="col-lg-1"></div>
+                          <div class="form-group col-lg-8">
+                            <input type="text" class="input-fade" id="bid-amount" name="bid-amount"
+                              placeholder="Quantity" />
+                          </div>
+                          <div class="col-lg-1"></div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-lg-8">
+                            <input type="text" class="input-fade" id="bid-picture" name="bid-picture"
+                              placeholder="Picture link (Optional)" />
+                          </div>
+                          <div class="form-group col-lg-8">
+                            <input class="input-fade" id="bid-description" placeholder="Brief description" />
+                          </div>
+                          <div class="col-lg-1"></div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-lg-1"></div>
+                  </div>
                 </div>
-              </div>
-              <div id="itemUserDiv">Owners Name</div>
-              <div id="itemUserContact">
-                email@email.com
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">
+            <div id="itemUserDiv">Owners Name</div>
+            <div id="itemUserContact">
+              <a href="mailto:email@email.com?subject=SweetWords"></a>
+            </div>
+            <button type="button" class="btn btn-outline-dark close-modal" data-dismiss="modal" id="close-button">
               Close
             </button>
-            <button class="bid-button">Add Bid</button>
+            <button type="button" class="bid-button btn btn-outline-dark">
+              Add Bid
+            </button>
           </div>
+          <div id="error-warning"></div>
         </div>
       </div>
     </div>
   </div>
+
   <footer>
     <div class="links">
       <a href="#" target="blank" class="contact-link">
@@ -140,4 +175,5 @@
   </footer>
   <script src="/js/search.js" type="text/javascript"></script>
 </body>
+
 </html>
