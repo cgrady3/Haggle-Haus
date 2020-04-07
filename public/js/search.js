@@ -3,8 +3,8 @@ $(document).ready(function() {
   var userID = $('.user-id').text();
   $(".user-name").hide();
   $('.user-id').hide();
-  console.log($('.user-name').text())
-  console.log($('.user-id').text())
+  console.log(userName)
+  console.log(userID)
   var url = window.location.href;
   var parsedUrl = url.split("/");
   var item = parsedUrl[4];

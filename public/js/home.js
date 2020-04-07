@@ -1,16 +1,10 @@
 $(document).ready(function() {
-  var userName = $(".user-name")
-    .text()
-    .trim();
   var userID = $(".user-id")
     .text()
     .trim();
   $(".user-name").hide();
   $(".user-id").hide();
-  $(".user-name").text("");
-  $(".user-id").text("");
-  console.log($(".user-name").text());
-  console.log($(".user-id").text());
+  console.log(userID);
   var api = {
     submit: function(res, req) {
       return $.ajax({
