@@ -206,11 +206,11 @@ $(document).ready(function() {
       .val()
       .trim();
     var parsedName = itemName.split(" ");
-    var searchName = "";
+    var searchedName = "";
     for (let i = 0; i < parsedName.length; i++) {
-      searchName += parsedName[i];
+      searchedName += parsedName[i];
     }
-    searchName.toLowerCase();
+    var searchName = searchedName.toLowerCase();
 
     var newItem = {
       name: $("#item-name")
