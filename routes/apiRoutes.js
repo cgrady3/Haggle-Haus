@@ -99,12 +99,11 @@ module.exports = function(app) {
   });
 
   //Get only items by a specific name
-  app.get("/api/items/:name", function(req, res) {
-    console.log("api search  " + name);
+  app.get("/api/searchItems/:name", function(req, res) {
     db.item
       .findAll({
         where: {
-          name: req.params.searchName
+          searchName: req.params.name
         }
       })
       .then(function(dbItems) {

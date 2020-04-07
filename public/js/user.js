@@ -203,6 +203,7 @@ $(document).ready(function() {
     for (let i = 0; i < parsedName.length; i++) {
       searchName += parsedName[i];
     }
+    searchName.toLowerCase();
 
     var newItem = {
       name: $("#item-name")
