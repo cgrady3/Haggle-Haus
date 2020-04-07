@@ -95,6 +95,8 @@ $(document).ready(function() {
 
   $(document).on("click", ".bid-button", function(event) {
     event.preventDefault();
+    $("#error-warning").empty();
+    var errorArray = [];
     var newBid = {
       bid: $("#bid-name")
         .val()
@@ -120,9 +122,33 @@ $(document).ready(function() {
     }
     console.log(newBid);
 
-    api.submit(newBid, "bids").then(function() {
-      location.reload();
-    });
+    if (newBid.description.length < 20 || newBid.description.length > 140) {
+      errorArray.push("The description must be between 20 and 140 characters.");
+    }
+
+    if (newBid.amount < 1 || newBid.amount > 20) {
+      errorArray.push("The amount must be between 1 and 20.");
+    }
+
+    if (newBid.name === "") {
+      errorArray.push("The name cannot be blank.");
+    }
+
+    if (errorArray.length === 0) {
+      api.submit(newBid, "bids").then(function() {
+        location.reload();
+      });
+    } else {
+      for (let i = 0; i < errorArray.length; i++) {
+        var newError = $("<p>" + errorArray[i] + "</p>");
+        $("#error-warning").append(newError);
+      }
+    }
+  });
+
+  $(document).on("click", "#close-button", function(event) {
+    event.preventDefault();
+    $("#error-warning").empty();
   });
 
   $("#search").click(function(e) {
