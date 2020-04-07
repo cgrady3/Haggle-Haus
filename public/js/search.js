@@ -135,7 +135,6 @@ $(document).ready(function() {
     }
 
     if (errorArray.length === 0) {
-      erN;
       api.submit(newBid, "bids").then(function() {
         location.reload();
       });
