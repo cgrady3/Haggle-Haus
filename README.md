@@ -10,13 +10,14 @@ Create an account or Login with an existing account.
 
 ## Using Haggle-Haus
 
-With Haggle-Haus, the User can look though a vast database of available items and post their own items to trade.
+With Haggle-Haus, Users can look though a vast database of available items and post their own items to trade.
 
 ## Built With
 
 - [Node](https://nodejs.org/en/)
 - [Mysql](https://dev.mysql.com/doc/)
 - [Sequelize](https://www.npmjs.com/package/sequelize)
+- [Passport](https://www.npmjs.com/package/passport)
 
 ## Authors
 
