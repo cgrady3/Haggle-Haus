@@ -201,6 +201,7 @@ $(document).ready(function() {
   // Grabs form information to post to items API
   $("#add-item-listing").on("click", function(event) {
     event.preventDefault();
+    $("#error-warning").empty();
     var errorArray = [];
     var itemName = $("#item-name")
       .val()
@@ -244,7 +245,6 @@ $(document).ready(function() {
     console.log(newItem);
 
     if (newItem.description === "") {
-      console.log("Yo");
       errorArray.push("The description cannot be blank.");
     }
 

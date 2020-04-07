@@ -182,7 +182,11 @@
                               />
                             </div>
                             <div class="form-group col-lg-8">
-                              <input class="input-fade" id="bid-description" placeholder="Brief description"/>
+                              <input
+                                class="input-fade"
+                                id="bid-description"
+                                placeholder="Brief description"
+                              />
                             </div>
                             <div class="col-lg-1"></div>
                           </div>
@@ -196,15 +200,14 @@
             </div>
             <div class="modal-footer">
               <div id="itemUserDiv">Owners Name</div>
-                <div id="itemUserContact">
-                  <a href="mailto:email@email.com?subject=SweetWords"
-                    >email@email.com</a
-                  >
-                </div>
+              <div id="itemUserContact">
+                <a href="mailto:email@email.com?subject=SweetWords"></a>
+              </div>
               <button
                 type="button"
                 class="btn btn-outline-dark close-modal"
                 data-dismiss="modal"
+                id="close-button"
               >
                 Close
               </button>
@@ -212,6 +215,7 @@
                 Add Bid
               </button>
             </div>
+            <div id="error-warning"></div>
           </div>
         </div>
       </div>
