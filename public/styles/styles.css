@@ -98,6 +98,7 @@ select:-webkit-autofill:focus {
   background-color: rgba(0, 0, 0, 0.06);
   font-family: "Marcellus SC", serif;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 100px;
 }
 
 .logo {
@@ -165,7 +166,7 @@ select:-webkit-autofill:focus {
   margin-top: -5px;
 }
 
-.bg-danger{
+.bg-danger {
   margin-right: 8px;
   height: 25px;
   width: 75px;
@@ -211,13 +212,14 @@ select:-webkit-autofill:focus {
   border-top-right-radius: 10px;
   min-height: 100px;
   justify-content: center;
-  background-color: rgba(143, 98, 31, .7);
+  background-color: rgba(143, 98, 31, 0.7);
 }
 
-.close-modal{
-  margin-left: 45% !important;}
+.close-modal {
+  margin-left: 45% !important;
+}
 
-.text-white{
+.text-white {
   margin-top: 2% !important;
 }
 
@@ -228,7 +230,7 @@ select:-webkit-autofill:focus {
   }
 }
 
-#clear{
+#clear {
   margin-top: 50px;
   font-size: 20px;
 }
