@@ -5,13 +5,12 @@ $(document).ready(function() {
   $('.user-id').hide();
   console.log($('.user-name').text())
   console.log($('.user-id').text())
-  var baseURL = 'localhost:3000/' // 'https://haggle-haus.herokuapp.com/';
   var url = window.location.href;
   var parsedUrl = url.split("/");
   var item = parsedUrl[4];
   console.log(item);
 
-  //search(item);
+  search(item);
 
   // The API object contains methods for each kind of request we'll make
   var api = {
@@ -40,7 +39,7 @@ $(document).ready(function() {
   };
 
   function search(item) {
-    api.grab("items/" + item).then(function(response) {
+    api.grab("searchItems/" + item).then(function(response) {
       console.log(response);
       for (var i = 0; i < response.length; i++) {
         var newRow = $(
@@ -96,17 +95,5 @@ $(document).ready(function() {
     var owner = $(`#itemUser${id}`).text();
     $("#itemUserDiv").text(owner);
     //email could be added if the users email is returned in the user response
-  });
-
-  $("#search").click(function(e) {
-    e.preventDefault();
-
-    var inputItem = $("#itemSearch")
-      .val()
-      .trim();
-    var parsedItem = inputItem.split(" ");
-    var searchItem = parsedItem.join('')
-console.log(searchItem)
-    window.location.replace(baseURL + "search/" + searchItem);
   });
 });

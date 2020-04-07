@@ -194,3 +194,8 @@ select:-webkit-autofill:focus {
     margin-right: 0rem;
   }
 }
+
+#clear{
+  margin-top: 50px;
+  font-size: 20px;
+}

@@ -28,12 +28,6 @@ $(document).ready(function() {
         type: "GET"
       });
     },
-    grabItem: function(req) {
-      return $.ajax({
-        url: "/api/items" + req,
-        type: "GET"
-      });
-    },
     annihilate: function(req) {
       return $.ajax({
         url: "/api/" + req,
@@ -142,7 +136,22 @@ $(document).ready(function() {
 
     var parsedItem = item.split(" ");
     var searchItem = parsedItem.join("");
+    searchItem.toLowerCase();
 
     location.href = "search/" + searchItem;
+  });
+
+  $("#itemSearch").on("keydown", function(e) {
+    if (e.keyCode === 13) {
+      var item = $("#itemSearch")
+        .val()
+        .trim();
+
+      var parsedItem = item.split(" ");
+      var searchItem = parsedItem.join("");
+      searchItem.toLowerCase();
+
+      location.href = "search/" + searchItem;
+    }
   });
 });

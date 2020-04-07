@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
+// Starting the server, syncing our models ----/
 db.sequelize
   .query("SET FOREIGN_KEY_CHECKS = 0")
   .then(function() {
