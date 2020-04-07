@@ -39,31 +39,35 @@ $(document).ready(function() {
       console.log(response);
       for (var i = 0; i < response.length; i++) {
         var newRow = $(
-          "<tr class= 'itemRow' data-number='" +
-            i +
-            "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
-            i +
-            "' src =" +
-            response[i].picture +
-            " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
-            i +
-            "'>" +
-            response[i].name +
-            "</td> <td id='itemDesc" +
-            i +
-            "'>" +
-            response[i].description +
-            "</td> <td id='itemBaseBarter" +
-            i +
-            "'>" +
-            response[i].base_barter_amount +
-            " " +
-            response[i].base_barter +
-            "</td> <td id='itemUser" +
-            i +
-            "'>" +
-            response[i].user.username +
-            "</td> </tr>"
+          "<tr class= 'itemRow' data-api-id ='" +
+          response[i].id +
+          "' data-number='" +
+          i +
+          "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
+          i +
+          "' src =" +
+          response[i].picture +
+          " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
+          i +
+          "'>" +
+          response[i].name +
+          "</td> <td id='itemDesc" +
+          i +
+          "'>" +
+          response[i].description +
+          "</td> <td id='itemBaseBarter" +
+          i +
+          "'>" +
+          response[i].base_barter_amount +
+          " " +
+          response[i].base_barter +
+          "</td> <td id='itemUser" +
+          i +
+          "'>" +
+          response[i].user.username +
+          "</td> <td>" +
+          response[i].bids.length +
+          " </td> </tr>"
         );
         $("#current-offers").append(newRow);
       }
@@ -74,6 +78,7 @@ $(document).ready(function() {
   $(document).on("click", ".itemRow", function(event) {
     event.preventDefault();
     var id = $(this).attr("data-number");
+    var apiId = $(this).attr("data-api-id");
     //img
     var img = $(`#itemImg${id}`).attr("src");
     $(".modal-body img").attr("src", img);
@@ -82,6 +87,7 @@ $(document).ready(function() {
     var name = $(`#itemName${id}`).text();
     $("#itemNameDiv").text(name);
     $("#itemNameDiv").attr("class", "text-white");
+    $("#itemNameDiv").attr("data-api-id", apiId);
 
     //desc
     var desc = $(`#itemDesc${id}`).text();
