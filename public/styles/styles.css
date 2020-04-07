@@ -165,6 +165,19 @@ select:-webkit-autofill:focus {
   margin-top: -5px;
 }
 
+.bid-long {
+  margin-left: 44.5%;
+  height: 25px;
+  width: 125px;
+  font-size: 14px;
+  border-radius: 2px;
+  border-color: #2f5bb7;
+  background-color: #1e4b94;
+  color: #ece4da;
+  line-height: 0.8;
+  margin-top: -5px;
+}
+
 .bg-danger{
   margin-right: 8px;
   height: 25px;

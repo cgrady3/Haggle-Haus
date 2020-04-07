@@ -52,7 +52,7 @@ $(document).ready(function() {
           response[i].name +
           "</td> <td id = 'see-bid-button-well-" +
           response[i].id +
-          "'> <button class = 'btn see-bids-button login-long' data-toggle='modal' data-target='#bids-modal' data-api-id ='" +
+          "'> <button class = 'btn see-bids-button bid-long' data-toggle='modal' data-target='#bids-modal' data-api-id ='" +
           response[i].id +
           "' id = 'see-bids-button-" +
           response[i].id +
