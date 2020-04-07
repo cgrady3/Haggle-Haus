@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: true,
       validate: {
         len: [8, 15],
-        is: ["^[a-z]+$",'i']
+        is: ["^[A-Za-z0-9_-]+$",'i']
       }
     },
     password: {
