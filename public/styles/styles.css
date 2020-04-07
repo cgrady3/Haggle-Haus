@@ -244,3 +244,7 @@ select:-webkit-autofill:focus {
   margin-top: 50px;
   font-size: 20px;
 }
+
+.card-header{
+  font-family: Arial, sans-serif !important;
+}
