@@ -5,6 +5,7 @@ $(document).ready(function() {
   $(".user-name").hide();
   $(".user-id").hide();
   console.log(userID);
+  
   var api = {
     submit: function(res, req) {
       return $.ajax({
