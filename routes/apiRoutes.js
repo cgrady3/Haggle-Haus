@@ -102,11 +102,12 @@ module.exports = function(app) {
   app.get("/api/searchItems/:name", function(req, res) {
     db.item
       .findAll({
+        include: [{ model: db.users }, { model: db.bid }],
         where: {
           searchName: req.params.name
         }
       })
-      .then(function(dbItems) {
+      .then(function(dbItem) {
         if (dbItem) {
           res.json(dbItem);
         } else {
