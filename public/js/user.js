@@ -52,7 +52,7 @@ $(document).ready(function() {
           response[i].name +
           "</td> <td id = 'see-bid-button-well-" +
           response[i].id +
-          "'> <button class = 'btn see-bids-button' data-toggle='modal' data-target='#bids-modal' data-api-id ='" +
+          "'> <button class = 'btn see-bids-button login' data-toggle='modal' data-target='#bids-modal' data-api-id ='" +
           response[i].id +
           "' id = 'see-bids-button-" +
           response[i].id +
@@ -110,7 +110,7 @@ $(document).ready(function() {
             response[i].id +
             "'>" +
             response[i].user.username +
-            "</td> <td> <button class = 'btn accept-button bg-primary' data-id =" +
+            "</td> <td> <button class = 'btn accept-button bg-primary login' data-id =" +
             response[i].id +
             " id = 'accept-button-" +
             response[i].id +
@@ -206,11 +206,11 @@ $(document).ready(function() {
       .val()
       .trim();
     var parsedName = itemName.split(" ");
-    var searchName = "";
+    var searchedName = "";
     for (let i = 0; i < parsedName.length; i++) {
-      searchName += parsedName[i];
+      searchedName += parsedName[i];
     }
-    searchName.toLowerCase();
+    var searchName = searchedName.toLowerCase();
 
     var newItem = {
       name: $("#item-name")
