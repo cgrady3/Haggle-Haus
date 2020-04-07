@@ -10,7 +10,7 @@ Create an account or Login with an existing account.
 
 ## Using Haggle-Haus
 
-With Haggle-Haus, the User can look though a vast database of available items and post his/her own items to trade.
+With Haggle-Haus, the User can look though a vast database of available items and post their own items to trade.
 
 ## Built With
 
