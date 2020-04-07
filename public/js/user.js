@@ -1,15 +1,11 @@
 $(document).ready(function() {
-  //For some reason replacing the $(".user-name") on line 9,11,13 with userName (from line 3)_ cause an error on the user page... therefore I guess there is no point in declaring that var... Idk why it doesn't work
-  var userName = $(".user-name")
-    .text()
-    .trim();
   var userID = $(".user-id")
     .text()
     .trim();
   $(".user-name").hide();
   $(".user-id").hide();
-  console.log($(".user-name").text());
-  console.log($(".user-id").text());
+  $("#bid-form").hide();
+  console.log(userID);
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -253,5 +249,15 @@ $(document).ready(function() {
     });
     //this updates the page to clear the form and also show the item we just added
     location.reload();
+  });
+  $('#open-form').click(function (e) { 
+    e.preventDefault();
+    $("#bid-form").show();
+    $("#open-form").hide();
+  });
+  $('#close-form').click(function (e) { 
+    e.preventDefault();
+    $("#bid-form").hide();
+    $("#open-form").show();
   });
 });

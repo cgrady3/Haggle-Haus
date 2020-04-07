@@ -152,6 +152,19 @@ select:-webkit-autofill:focus {
   margin-top: -5px;
 }
 
+.login-long {
+  margin-left: 40%;
+  height: 25px;
+  width: 125px;
+  font-size: 14px;
+  border-radius: 2px;
+  border-color: #2f5bb7;
+  background-color: #1e4b94;
+  color: #ece4da;
+  line-height: 0.8;
+  margin-top: -5px;
+}
+
 #search {
   margin-top: 5px;
   height: 22px;
