@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  var userID = $(".user-id")
-    .text()
-    .trim();
+
+  var userID = $(".user-id").text().trim();
+
   $(".user-name").hide();
   $(".user-id").hide();
   console.log(userID);
