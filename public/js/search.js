@@ -1,5 +1,7 @@
 $(document).ready(function() {
+
   var userID = $(".user-id").text().trim();
+
   $(".user-name").hide();
   $(".user-id").hide();
   console.log(userID);
@@ -40,34 +42,34 @@ $(document).ready(function() {
       for (var i = 0; i < response.length; i++) {
         var newRow = $(
           "<tr class= 'itemRow' data-api-id ='" +
-          response[i].id +
-          "' data-number='" +
-          i +
-          "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
-          i +
-          "' src =" +
-          response[i].picture +
-          " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
-          i +
-          "'>" +
-          response[i].name +
-          "</td> <td id='itemDesc" +
-          i +
-          "'>" +
-          response[i].description +
-          "</td> <td id='itemBaseBarter" +
-          i +
-          "'>" +
-          response[i].base_barter_amount +
-          " " +
-          response[i].base_barter +
-          "</td> <td id='itemUser" +
-          i +
-          "'>" +
-          response[i].user.username +
-          "</td> <td>" +
-          response[i].bids.length +
-          " </td> </tr>"
+            response[i].id +
+            "' data-number='" +
+            i +
+            "' data-toggle='modal' data-target='#info-modal'> <td> <img id='itemImg" +
+            i +
+            "' src =" +
+            response[i].picture +
+            " alt='' border=3 height=50 width=50 </img></td> <td id='itemName" +
+            i +
+            "'>" +
+            response[i].name +
+            "</td> <td id='itemDesc" +
+            i +
+            "'>" +
+            response[i].description +
+            "</td> <td id='itemBaseBarter" +
+            i +
+            "'>" +
+            response[i].base_barter_amount +
+            " " +
+            response[i].base_barter +
+            "</td> <td id='itemUser" +
+            i +
+            "'>" +
+            response[i].user.username +
+            "</td> <td>" +
+            response[i].bids.length +
+            " </td> </tr>"
         );
         $("#current-offers").append(newRow);
       }
