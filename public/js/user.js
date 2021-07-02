@@ -5,6 +5,7 @@ $(document).ready(function() {
   $(".user-name").hide();
   $(".user-id").hide();
   $("#bid-form").hide();
+  console.log(userID);
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -37,6 +38,8 @@ $(document).ready(function() {
   };
 
   api.grab("items/user/" + userID).then(function(response) {
+    console.log(response);
+
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
         "<tr class = item-row data-id ='" +
@@ -81,6 +84,7 @@ $(document).ready(function() {
     $("#itemNameDiv").attr("class", "text-white");
     $("#itemNameDiv").text(name);
     api.grab("bids/item/" + id).then(function(response) {
+      console.log(response);
       $("#current-item-bids").empty();
       for (var i = 0; i < response.length; i++) {
         var newRow = $(
@@ -114,6 +118,7 @@ $(document).ready(function() {
         );
         $("#current-item-bids").append(newRow);
         if (response[i].accepted === true) {
+          console.log("I got here");
           $("#accept-button-" + response[i].id).removeClass(
             "bg-primary accept-button"
           );
@@ -128,21 +133,28 @@ $(document).ready(function() {
 
   $(document).on("click", ".accept-button", function(event) {
     var id = $(this).attr("data-id");
+    console.log(id);
     $(this).removeClass("accept-button bg-primary");
     $(this).addClass("cancel-button bg-info");
     $(this).text("Cancel");
-    api.update("bids/accept/" + id).then(function(response) {});
+    api.update("bids/accept/" + id).then(function(response) {
+      console.log(response);
+    });
   });
 
   $(document).on("click", ".cancel-button", function(event) {
     var id = $(this).attr("data-id");
+    console.log(id);
     $(this).removeClass("cancel-button bg-info");
     $(this).addClass("accept-button bg-primary");
     $(this).text("Accept");
-    api.update("bids/cancel/" + id).then(function(response) {});
+    api.update("bids/cancel/" + id).then(function(response) {
+      console.log(response);
+    });
   });
 
   api.grab("bids/user/" + userID).then(function(response) {
+    console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
         "<tr id = 'bid-row-" +
@@ -230,6 +242,7 @@ $(document).ready(function() {
     if (!(image === "")) {
       newItem.picture = image;
     }
+    console.log(newItem);
 
     if (newItem.description === "") {
       errorArray.push("The description cannot be blank.");
@@ -245,6 +258,7 @@ $(document).ready(function() {
 
     if (errorArray.length === 0) {
       api.submit(newItem, "items").then(function(response) {
+        console.log(response);
         //this updates the page to clear the form and also show the item we just added
         location.reload();
       });

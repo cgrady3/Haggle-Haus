@@ -1,12 +1,11 @@
 $(document).ready(function() {
-  //Grabbing user ID
   var userID = $(".user-id")
     .text()
     .trim();
   $(".user-name").hide();
   $(".user-id").hide();
-
-  //Object for interacting with the api
+  console.log(userID);
+  
   var api = {
     submit: function(res, req) {
       return $.ajax({
@@ -32,8 +31,8 @@ $(document).ready(function() {
     }
   };
 
-  //Populates items up for bid
   api.grab("items").then(function(response) {
+    console.log(response);
     for (var i = 0; i < response.length; i++) {
       var newRow = $(
         "<tr class= 'itemRow' data-api-id ='" +
@@ -95,7 +94,6 @@ $(document).ready(function() {
     //email could be added if the users email is returned in the user response
   });
 
-  //Submits a bid when the form is filled out and the button clicked.
   $(document).on("click", ".bid-button", function(event) {
     event.preventDefault();
     $("#error-warning").empty();
@@ -123,6 +121,7 @@ $(document).ready(function() {
     if (!(image === "")) {
       newBid.picture = image;
     }
+    console.log(newBid);
 
     if (newBid.description.length < 20 || newBid.description.length > 140) {
       errorArray.push("The description must be between 20 and 140 characters.");
